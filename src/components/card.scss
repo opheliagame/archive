@@ -1,0 +1,25 @@
+$bg-color: black;  // This can change
+$white : #fff;
+$black : #000;
+$colors: $black, $white;
+
+@function set-text-color($color) {
+    @if (lightness( $color ) > 50) {
+      @return $black; // Lighter color, return black
+    }
+    @else {
+      @return $white; // Darker color, return white
+    }
+}
+
+
+.main {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+}  
