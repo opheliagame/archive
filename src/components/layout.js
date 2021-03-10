@@ -25,15 +25,20 @@ const Layout = ({ children }) => {
 
   return (
     <div className="App">
-      <Header siteTitle={data.site.siteMetadata?.title} />
+        <Header siteTitle={data.site.siteMetadata?.title} />
         {children}
-      <div className="footer">
-        <small>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </small>
-      </div>
+
+        {/* <div className="border-bottom-container">
+            <div className="border-bottom"></div>
+        </div> */}
+
+        <div className="footer">
+            <small>
+            <a href="https://www.instagram.com/ophelia.game/">@opheliagame</a>, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+            </small>
+        </div>
     </div>
   )
 }

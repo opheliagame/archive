@@ -39,6 +39,7 @@ module.exports = {
               wrapperStyle: fluidResult => `flex:${Math.round(fluidResult.aspectRatio, 2)};`,
             },
           },
+          `gatsby-remark-copy-linked-files`,
         ],
       },
     },
@@ -48,7 +49,7 @@ module.exports = {
         // name: `pages`,
         path: `${__dirname}/src/pages/`
       }
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

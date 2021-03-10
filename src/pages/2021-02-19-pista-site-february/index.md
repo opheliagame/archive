@@ -7,11 +7,11 @@ img: './hero.png'
 excerpt: ''
 ---
 
-I never thought that I'd be doing this but here we are, I'm writing for the web and you're reading me! But let's get right into it without dilly dallying
+Hey! Yes since I have never written for THE Web before this is how I'll start. This is probably not going to be very good since aforementioned haha but hopefully if you are as new to shaders as I am, and are learning them yourself, you might find something of value in here. 
 
-This article is the start of a series of articles that I plan on writing about shaders while learning how to write them. Documenting the learning process in this way will hopefully help me understand what areas I have covered, where I feel comfortable, and which parts I should focus on next. I've always been someone who starts something but never really gets around to finishing it, and so I hope that I can finally end that with these articles and have more understanding after, let's say a month, of where I was and where I am headed(looking at you @kayserifserif, thanks for the inspiration!)
+This article is the start of a series of articles that I plan on writing about shaders while learning how to write them. Documenting the learning process in this way will hopefully help me understand what areas I have covered, where I feel comfortable, and which parts I should focus on next. I've always been someone who starts something but never really gets around to finishing it, and so I hope that I can finally end that with these articles and have more understanding after, let's say a month, of [where I was and where I am headed](https://www.instagram.com/p/CLZmyd3B3vv/)([@kayserifserif](https://www.instagram.com/kayserifserif/), thank you for the inspiration!)
 
-## Aand it's shader time 
+### Aand it's shader time 
 
 Today I will be going through a shader I wrote to recreate an old sketch made in Processing. 
 
@@ -21,7 +21,9 @@ The Processing code uses an Eye class and some vector math that I thought was a 
 
 To try out this shader and experiment with your own, it is very simple and easy to use an extension in VSCode, there is hardly any setup required and you'll be able to see the output right inside your editor with changes being reflected as you type them. I have been using [glsl-canvas](https://marketplace.visualstudio.com/items?itemName=circledev.glsl-canvas) but there are a few others as well.　
 
-For our simple purposes we only need to know how to make circles and make them move using glsl. If you haven't already heard of the [Book of Shaders](https://thebookofshaders.com/), leave this simple minded article right now and head over there because I could never be as succint and amazing in explaining the smallest details or big picture ideas about shaders, and the site is just beautiful. :heart: But if you already know a bit about Fragment Shaders, you'll know that we need a `main` function, some necessary directives and uniforms and a function to make a circle to begin with. The circle function takes as its input a vector describing the coordinate space of the canvas, a vector for the center of the circle in this coordinate space and a radius value. We're drawing the circle based on the distance between each pixel and the center of the circle. So a color value will be calculated for each pixel based on how far it is from the center of the circle. Now, I referred the Book of Shaders [shaping](https://thebookofshaders.com/05/) page myself because this part is not always easy to understand and it takes a lot of time and practice to develop the intuition that'll let you write amazing shaping functions in glsl. Bless us all, Mr Miyagi! 
+For our simple purposes we only need to know how to make circles and make them move using glsl. If you haven't already heard of the [Book of Shaders](https://thebookofshaders.com/), leave this simple minded article right now and head over there because I could never be as succint and amazing in explaining the smallest details or big picture ideas about shaders, and the site is just beautiful. 🖤 But if you already know a bit about Fragment Shaders, you'll know that we need a `main` function, some necessary directives and uniforms and a function to make a circle to begin with. 
+
+The circle function takes as its input a vector describing the coordinate space of the canvas, a vector for the center of the circle in this coordinate space and a radius value. We're drawing the circle based on the distance between each pixel and the center of the circle. So a color will be calculated for each pixel based on how far it is from the center of the circle. I referred the Book of Shaders [shaping](https://thebookofshaders.com/05/) page myself because this part is not always easy to understand and it takes a lot of time and practice to develop the intuition that'll let you write amazing shaping functions in glsl. Bless us all, Mr Miyagi! 
 
 ``` c++
 #ifdef GL_ES
@@ -60,7 +62,13 @@ void main() {
 
 You might be wondering what is this `fract` business we've got going here and so I will try to explain. Inside our shader the coordinate space, i.e. `st` lies between 0.0 and 1.0 since we are normalizing using the resolution of the screen, `u_resolution`. [fract](https://thebookofshaders.com/glossary/?search=fract) is a glsl function that returns the fractional value of any number. I am using it here to be able to draw more than one circle while only using `vec(0.5)` as the location for all the circles. The subtraction in the beginning is to reverse the color of circle and background. 
 
-To make the smaller circle within the bigger circle, we'll call the `circle` function again, giving it the same coordinate space and a smaller radius, but this time the location if going to be a function of `u_time`. We want the small circle to move in a circle(yay circles!), so using the uniform `u_time` we calculate the position using the polar coordinate formula for circles and add 0.5 as the offset to center it within the bigger circle.
+To make the smaller circle within the bigger circle, we'll call the `circle` function again, giving it the same coordinate space and a smaller radius, but we don't want it to be stationary. Let's set the location as a function of the uniform `u_time`. We want the small circle to move in a circle(yay circles!), so by using `u_time` as our angle, we can calculate the x and y location as such
+
+```c++
+    x = cos(u_time) * radius
+    y = sin(u_time) * radius
+```
+Finally we will add 0.5 as an offset to center the smaller circle within the big circle. When finally setting `gl_FragColor` in the last line, we will multiply the values for both circles. This would be equivalent to an `and` operation, in ahader terms, combining both the results. Also notice how we subtract from 1.0 with only the bigger circle and not the smaller one. You could try playing with this to get a better feel for how things are working. 
 
 ```c++
 void main() {
@@ -76,13 +84,13 @@ void main() {
 
 ```
 
-The only thing remaining now is to add mouse interaction 🐁 since we don't want all the circles looking in the same direction, which is what happens if we use `u_time` as the angle. 
-We'll first normalise the uniform `u_mouse` just like we normalised the coordinates. And then make a vector starting from the pixel position pointing towards the mouse
+The only thing remaining now is to add mouse interaction 🐁 since we don't want all the circles looking in the same direction, which is what happens if we use any uniform as that value would be the same for all our pixels.  
+For this we'll first normalise the uniform `u_mouse` just like we normalised the coordinates. And then make a vector starting from the pixel position pointing towards the mouse. We can now use this vector to calculate an angle using inverse tangent. 
 
 ```c++
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    vec2 m = u_mouse/u_resolution.xy;
+    vec2 m = u_mouse.xy/u_resolution.xy;
 
     vec2 dir = m-st;
     float dirangle = atan(dir.y, dir.x);
@@ -96,5 +104,8 @@ void main() {
     gl_FragColor = vec4(vec3(c*smallc), 1.0);
 }
 ```
+And if we just plug this angle into our smaller circles, tada, we have our shader! 
 
-![Final result](./hero.png)
+![Final gif](./eye.gif)
+
+If you have something to share, thoughts about this article, or any mistakes that you thought were made(very probable), please feel free to reach out to me on Instagram, link in footer. 💃 That's all for this time, hopefully there will be more soon. 
