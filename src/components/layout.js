@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import Helmet from 'react-helmet'
 import Header from "./header"
 import "./layout.scss"
 
@@ -25,6 +26,10 @@ const Layout = ({ children }) => {
 
   return (
     <div className="App">
+        <Helmet>
+            <title>opheliagame</title>
+        </Helmet>
+
         <Header siteTitle={data.site.siteMetadata?.title} />
         {children}
 

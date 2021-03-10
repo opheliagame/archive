@@ -7,7 +7,7 @@ import Card from '../components/card';
 
 const IndexPage = ({ data }) => {
 	const { edges } = data.allMarkdownRemark;
-    const emptyedges = new Array(6-edges.length).fill(0);
+    const emptyedges = new Array(8-edges.length).fill(0);
     const blocks = edges.concat(emptyedges);
 
 	return (

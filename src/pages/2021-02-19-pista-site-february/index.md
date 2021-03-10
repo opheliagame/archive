@@ -62,13 +62,13 @@ void main() {
 
 You might be wondering what is this `fract` business we've got going here and so I will try to explain. Inside our shader the coordinate space, i.e. `st` lies between 0.0 and 1.0 since we are normalizing using the resolution of the screen, `u_resolution`. [fract](https://thebookofshaders.com/glossary/?search=fract) is a glsl function that returns the fractional value of any number. I am using it here to be able to draw more than one circle while only using `vec(0.5)` as the location for all the circles. The subtraction in the beginning is to reverse the color of circle and background. 
 
-To make the smaller circle within the bigger circle, we'll call the `circle` function again, giving it the same coordinate space and a smaller radius, but we don't want it to be stationary. Let's set the location as a function of the uniform `u_time`. We want the small circle to move in a circle(yay circles!), so by using `u_time` as our angle, we can calculate the x and y location as such
+To make the smaller circle within the bigger circle, we'll call the `circle` function again, giving it the same coordinate space and a smaller radius, but we don't want it to be stationary. Let's set the location as a function of the uniform `u_time`. We want the small circle to move in a circle(yay circles!), so by using `u_time` as our angle, we can calculate the x and y location
 
 ```c++
     x = cos(u_time) * radius
     y = sin(u_time) * radius
 ```
-Finally we will add 0.5 as an offset to center the smaller circle within the big circle. When finally setting `gl_FragColor` in the last line, we will multiply the values for both circles. This would be equivalent to an `and` operation, in ahader terms, combining both the results. Also notice how we subtract from 1.0 with only the bigger circle and not the smaller one. You could try playing with this to get a better feel for how things are working. 
+Finally we will add 0.5 as an offset to center the smaller circle within the big circle. When finally setting `gl_FragColor` in the last line, we will multiply the values for both circles. This would be equivalent to an `and` operation, in shader terms, combining both the results. Also notice how we subtract from 1.0 with only the bigger circle and not the smaller one. You could try playing with this to get a better feel for how things are working. 
 
 ```c++
 void main() {
@@ -85,6 +85,7 @@ void main() {
 ```
 
 The only thing remaining now is to add mouse interaction 🐁 since we don't want all the circles looking in the same direction, which is what happens if we use any uniform as that value would be the same for all our pixels.  
+
 For this we'll first normalise the uniform `u_mouse` just like we normalised the coordinates. And then make a vector starting from the pixel position pointing towards the mouse. We can now use this vector to calculate an angle using inverse tangent. 
 
 ```c++

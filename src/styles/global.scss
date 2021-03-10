@@ -15,7 +15,9 @@ $red : rgba(255, 0, 0, 0.9);
 $red-light : rgba(255, 0, 0, 0.5);
 $colors: $black, $white;
 
-// html, body {margin: 0; padding: 0; overflow-x:hidden;}
+body {
+    overflow: hidden;
+}
 
 a {
     text-decoration: none;
@@ -28,8 +30,9 @@ a {
 
     display: grid;
     grid-template-columns: 10% 10% 60% 20%;
-    grid-template-rows: 10% auto 5%;
+    grid-template-rows: 10% 86% 4%;
     align-items: flex-start;
+    overflow: hidden;
 
     .navigation {
         grid-column-start: 1; 
@@ -40,6 +43,7 @@ a {
         text-align: left;   
         align-self: stretch;
         background-color: $black;
+        padding-left: 4px;
     
         font-family: 'Atami';
         font-size: 2.25rem;
@@ -52,34 +56,38 @@ a {
     } 
 
     .border-bottom-container {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 2;
-        grid-row-end: 3;
+        grid-column-start: 3;
+        // grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
 
-        display: flex;
-        flex-direction: column;
-        justify-items: flex-end;
+        // display: flex;
+        // flex-direction: column;
+        // justify-items: flex-end;
         
-        height: inherit;
+        // height: inherit;
 
-        border-bottom: red 4px dashed;
+        // border-bottom: red 4px dashed;
+
+        background: linear-gradient(to right top, #0089f2 50%, #DDD 50%);
+        background-size: 100% calc(100% - 100vh + 129px);
+        background-repeat: no-repeat;
+
     }
+
+    .border-bottom-container::before {
+        content: '';
+        position: fixed;
+        top: 10%;
+        bottom: 0;
+        width: 100%;
+        z-index: -1;
+        background: white;
+    }
+
 }
 
 .main {
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 4;
-
-    // display: grid;
-    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    // grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
-
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-auto-rows: 1fr;
 
     border-left: red 4px dashed;
     border-top: red 4px dashed;
@@ -109,40 +117,45 @@ a {
 
     background-repeat: no-repeat;
     background-size: cover;
+
+    .card-item.title {
+        font-size: x-large;
+        font-weight: bold;
+        // padding-right: 0px;
+    }
+
+    .title {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    
+        padding: 10px 4px 10px 4px;
+        margin-bottom: 0px;
+        background-image: linear-gradient(to right, $red 0%, $white 100%);
+        background-repeat: no-repeat;
+    }
+
+    .date {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        font-size: 10px;
+    }
+
+    .tags {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    
 }
 
 .card-container.white {
     background-color: $white;
+    cursor: default;
 }
 .card-container.black {
     background-color: $black;
-}
-.card-container .date {
-    grid-row-start: 3;
-    grid-row-end: 4;
-    font-size: 10px;
-}
-.card-container .title {
-    grid-row-start: 2;
-    grid-row-end: 3;
-
-    padding: 10px 4px 10px 4px;
-    margin-bottom: 0px;
-    background-image: linear-gradient(to right, $red 0%, $white 100%);
-    background-repeat: no-repeat;
+    cursor: default;
 }
 
-.card-container {
-    .card-item.title {
-        font-size: x-large;
-        font-weight: bold;
-    }
-}
-
-.card-container .tags {
-    grid-row-start: 1;
-    grid-row-end: 2;
-}
 
 .blog-container {
     grid-column-start: 3;
@@ -150,10 +163,26 @@ a {
     grid-row-start: 2;
     grid-row-end: 3;
 
-    // max-width: 75%;
     padding-left: 8px;
+    padding-right: 12px;
     border-left: red 4px dashed;
     border-top: red 4px dashed;
+
+    overflow-y: scroll;
+    height: 100%;
+
+    a {
+        color: $black;
+        background-image: linear-gradient($red 0%, $red 0%);
+        background-repeat: no-repeat;
+        background-size: 100% 0.2em;
+        background-position: 0 95%;
+        // transition: background-size 0.25s ease-in;
+        // &:hover {
+        //     background-size: 100% 88%;
+        // }
+       
+    }
 }
 
 @mixin red-link($text-color, $underline-color, $underline-size) {
@@ -165,22 +194,10 @@ a {
         background-position: 0 95%;
     } 
 }
-
-.blog-container a {
-    color: $black;
-    background-image: linear-gradient($red 0%, $red 0%);
-    background-repeat: no-repeat;
-    background-size: 100% 0.2em;
-    background-position: 0 150%;
-    // transition: background-size 0.25s ease-in;
-    // &:hover {
-    //     background-size: 100% 88%;
-    // }
-   
-}
-
+ 
 .blog-container .title, h1, h2, h3 {
     padding-top: 12px;
+    margin-right: -12px;
 
     background-image: linear-gradient(to right, $white 0%, red 100%);
     background-repeat: no-repeat;
