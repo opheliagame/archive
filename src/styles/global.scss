@@ -202,7 +202,7 @@ a {
 
 // media queries --> bigger screen towards smaller screen
 @mixin mobile {
-    @media screen and (max-width: 25em) {
+    @media screen and (max-width: 30em) {
         .App {
             .navigation {
                 grid-column-start: 1; 
