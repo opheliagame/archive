@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
@@ -8,9 +8,22 @@ const Template = ({ data, pathContext }) => {
 	const html = data.markdownRemark.html;
 	const { next, prev } = pathContext;
 
+    const [height, setHeight] = useState(0);
+    const ref = useRef(null);
+    useEffect(() => {
+        setHeight(ref.current.clientHeight);
+    }, []);
+    
+    const handleScroll = event => {
+        let offset = event.target.scrollTop;
+        // console.log(offset, height, offset/height);
+        document.body.style.setProperty('--scroll', offset/height);
+    }
+    
+
 	return (
-		<Layout>
-            <div className="blog-container">
+		<Layout >
+            <div className="blog-container" ref={ref} onScroll={handleScroll}>
                 <h1 className="title">{title}</h1>
                 <div>
                     <em>{date}</em>

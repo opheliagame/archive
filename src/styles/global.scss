@@ -311,3 +311,34 @@ a {
 @include laptop();
 @include tablet();
 @include mobile();
+
+
+.progress {
+    height: 10px;
+    width: 0%;
+    background-color: #fff;
+    // position: relative;
+    // top: 0;
+    // left: 0;
+    animation: progress 1s linear;
+
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  @keyframes progress {
+    to {
+      background-color: rgb(6, 7, 7);
+      width: 100%;
+    }
+  }
+  :root * {
+    /* Pause the animation */
+    animation-play-state: paused;
+    /* Bind the animation to scroll */
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+  }

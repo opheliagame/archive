@@ -14,38 +14,37 @@ import Header from "./header"
 import "./layout.scss"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+    const data = useStaticQuery(graphql`
+        query SiteTitleQuery {
+        site {
+            siteMetadata {
+            title
+            }
         }
-      }
-    }
-  `)
+        }
+    `)
 
-  return (
-    <div className="App">
-        <Helmet>
-            <title>opheliagame</title>
-        </Helmet>
+    return (
+        <div className="App">
+            <Helmet>
+                <title>opheliagame</title>
+            </Helmet>
 
-        <Header siteTitle={data.site.siteMetadata?.title} />
-        {children}
+            <Header siteTitle={data.site.siteMetadata?.title} />
 
-        {/* <div className="border-bottom-container">
-            <div className="border-bottom"></div>
-        </div> */}
+            <div className='progress'></div>
 
-        <div className="footer">
-            <small>
-            <a href="https://www.instagram.com/ophelia.game/">@opheliagame</a>, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
-            </small>
+            {children}
+
+            <div className="footer">
+                <small>
+                <a href="https://www.instagram.com/ophelia.game/">@opheliagame</a>, Built with
+                {` `}
+                <a href="https://www.gatsbyjs.com">Gatsby</a>
+                </small>
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 Layout.propTypes = {
