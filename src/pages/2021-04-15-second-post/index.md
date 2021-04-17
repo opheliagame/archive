@@ -1,18 +1,17 @@
 ---
 path: '2021-04-15-pixelate'
 date: '2021-04-15'
-title: 'Pixel land 👾'
-tags: ['shader', '2021']
+title: 'Texture land 👾'
+tags: ['shader', 'texture', '2021', 'april']
 img: './hero.png'
-video: ['./mess1.webm', './mess2.webm', './mess3.webm', './mess5.webm']
 excerpt: ''
 ---
 
-This is definitely not a week after the last article. And I think a part of the reason is because I haven't been studying shaders consistently. But hey, I'm back here, and so that is a good sign right? I hope it is. And today I want to talk about textures and make a simple shader that pixelates an image. 
+This is definitely not a week after the last article. And I think a part of the reason is because I haven't been studying shaders consistently. But hey, I'm back here, and so that is a good sign right? I hope it is. So today I want to talk about textures and make a simple shader that pixelates an image. 
 
 ### What is a texture you say
 
-Plainly speaking, texture is shader speak for image. When getting introduced to texture, and even during this article you will come across the term texture coordinates as well. Now this concept does not have a counterpart with respect to images, but it becomes inseparable from textures when it comes to shaders. If you have a texture, you must have texture coordinates. 
+Simply put, texture is shader speak for image. When getting introduced to texture, and even during this article you will come across the term texture coordinates as well. Now this concept does not have a counterpart with respect to images, but it becomes inseparable from textures when it comes to shaders. If you have a texture, you must have texture coordinates. 
 
 And this is the way it is because shaders have the capability to wrap a texture around 3D objects and in other ways as well. That is, you can use an image to cover a 3D model, for example a cylinder, in any number of ways you can imagine. To specify which part of an image goes where on a 2D plane or a 3D object, we need texture coordinates. This will become more clear as you use them yourself in a bit. 
 
@@ -50,12 +49,11 @@ void main() {
 
 To use a texture inside a shader, the function that glsl provides us is called `texture2D`. The first parameter for this function is the texture uniform and the second parameter is.. yes you guessed it, texture coordinates! 
 
-![displaying image using shader](./post2-1.png)
-Photo by <a href="https://unsplash.com/@geoffroyh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Geoffroy Hauwen</a> on <a href="https://unsplash.com/s/photos/indian-street?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+[![displaying image using shader](./post2-1.png "Photo by Geoffroy Hauwen on Unsplash")](https://unsplash.com/@geoffroyh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 Side note: as you can probably tell from the code, texture coordinates usually range from 0 to 1 although this might not be so in some cases. But it would be safe to assume the range 0-1 for most cases. 
 
-### Piixxeellaattee
+### PPiixxeellaattee
 
 Now that we can display an image inside a shader, let's move to the next step and pixelate it. For doing this, do you think we should modify the texture coordinates, i.e. how we get pixels from an image, or the image after we get it using simple texture coordinates. Let's first try using the first approach.
 And to get to that we'll first explore how to make a grid using a shader.
@@ -74,7 +72,7 @@ void main() {
 }
 ```
 
-If we try to unpack this line which defines our `grid`, we can see that we are first upscaling or zooming out by multiplying `st` with a float value and then flooring the space to get only values like `0.0, 1.0, 2.0, 3.0, 4.0..`. This flooring operation essentially divides our entire space into a grid. When picking randomly from the floored grid, we start to get closer to our idea of pixellation.
+If we try to unpack this line which defines our `grid`, we can see that we are first upscaling or zooming out by multiplying `st` with a float value and then flooring the space to get floored values like `0.0, 1.0, 2.0, 3.0, 4.0..`. This flooring operation essentially divides our entire space into a grid. When picking randomly from this floored grid, we start to get closer to our idea of pixellation.
 
 ```c++
 void main() {
@@ -113,21 +111,24 @@ void main() {
 
 ![almost there but not quite..](./post2-3.png)
 
-Oops what are these weird lines, we didn't want those did we now? Let us go back to what we said about texture coordinates. They range from 0 to 1, and since we are adding two vectors to each other, is it not possible for them to exceed this range..? What if we take only the `fract`ional part of the resulting vector?
+Oops what are these weird lines, we don't want those? Let us go back to what we said about texture coordinates. They range from 0 to 1, and since we are adding two vectors to each other, is it not possible for them to exceed this range..? What if we take only the `fract`ional part of the resulting vector?
 
 ```c++
 vec2 tex_coord = fract(st+grid);
 ```
 
-Voila, we've done it! You can now try playing around with these different values, maybe change how you want to define the `deg` of pixelation. 
-Here are a few things I got while messing around.
-
-!['mess 1'](./mess1.png)
-
-!['mess 2'](./mess2.png)
+Voila, we've done it! 
 
 !['mess 3'](./mess3.png)
 
+You can now try playing around with these different values, maybe change how you want to define the `deg` of pixelation. 
+Here are a few things I got while messing around.
+
+!['mess 2'](./mess2.png)
+
+!['mess 1'](./mess1.png)
+
 !['mess 4'](./hero.png)
 
+These looked much better in motion, but I haven't yet figured out how to use videos with Gatsby xD. You can try playing with motion as well by using the `u_time` uniform.
 So until next time, which will hopefully be sooner, have fun! 💃
