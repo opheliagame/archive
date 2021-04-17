@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
-const Template = ({ data, pathContext }) => {
+const Template = ({ data, pageContext }) => {
 	const title = data.markdownRemark.frontmatter.title;
 	const date = data.markdownRemark.frontmatter.date;
 	const html = data.markdownRemark.html;
-	const { next, prev } = pathContext;
+	const { next, prev } = pageContext;
 
     const [height, setHeight] = useState(0);
     const ref = useRef(null);
@@ -32,7 +32,7 @@ const Template = ({ data, pathContext }) => {
                 <div className="blogpost" dangerouslySetInnerHTML={{ __html: html }} />
                 <p>
                     {prev && (
-                        <Link to={prev.frontmatter.path}>
+                        <Link to={`/${prev.frontmatter.path}`}>
                             {prev.frontmatter.title}{' '}
                             <span role="img" aria-label="point-left">
                                 👈{' '}
@@ -43,7 +43,7 @@ const Template = ({ data, pathContext }) => {
                 </p>
                 <p>
                     {next && (
-                        <Link to={next.frontmatter.path}>
+                        <Link to={`/${next.frontmatter.path}`}>
                             Next{' '}
                             <span role="img" aria-label="point-right">
                                 👉
