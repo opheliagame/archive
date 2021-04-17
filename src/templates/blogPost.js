@@ -11,16 +11,15 @@ const Template = ({ data, pageContext }) => {
     const [height, setHeight] = useState(0);
     const ref = useRef(null);
     useEffect(() => {
-        setHeight(ref.current.clientHeight);
+        setHeight(ref.current.scrollHeight);
     }, []);
     
     const handleScroll = event => {
         let offset = event.target.scrollTop;
         // console.log(offset, height, offset/height);
-        document.body.style.setProperty('--scroll', offset/height);
+        document.body.style.setProperty('--scroll', (offset/height)/0.8 );
     }
     
-
 	return (
 		<Layout >
             <div className="blog-container" ref={ref} onScroll={handleScroll}>
