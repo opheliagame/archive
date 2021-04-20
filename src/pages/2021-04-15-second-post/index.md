@@ -19,7 +19,7 @@ And this is the way it is because shaders have the capability to wrap a texture 
 
 So to begin, let's write all the simple boilerplate that we need for our shader, and you should see a red screen. 
 
-```c++
+```glsl
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -38,7 +38,7 @@ You must have noticed that we have an extra uniform of type `sampler2D`, and thi
 
 But we are not done yet displaying our image, since we are not using the texture inside the shader at all yet. So let's go ahead and do that. 
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     vec4 tex = texture2D(u_texture_0, st);
@@ -58,7 +58,7 @@ Side note: as you can probably tell from the code, texture coordinates usually r
 Now that we can display an image inside a shader, let's move to the next step and pixelate it. For doing this, do you think we should modify the texture coordinates, i.e. how we get pixels from an image, or the image after we get it using simple texture coordinates. Let's first try using the first approach.
 And to get to that we'll first explore how to make a grid using a shader.
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
 
@@ -74,7 +74,7 @@ void main() {
 
 If we try to unpack this line which defines our `grid`, we can see that we are first upscaling or zooming out by multiplying `st` with a float value and then flooring the space to get floored values like `0.0, 1.0, 2.0, 3.0, 4.0..`. This flooring operation essentially divides our entire space into a grid. When picking randomly from this floored grid, we start to get closer to our idea of pixellation.
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
 
@@ -95,7 +95,7 @@ Side note: If you are wondering, like I was, how `floor` operation differs from 
 
 Since we have all the ingredients for our recipe, let's plug them into action and see what happens!
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     
@@ -113,7 +113,7 @@ void main() {
 
 Oops what are these weird lines, we don't want those? Let us go back to what we said about texture coordinates. They range from 0 to 1, and since we are adding two vectors to each other, is it not possible for them to exceed this range..? What if we take only the `fract`ional part of the resulting vector?
 
-```c++
+```glsl
 vec2 tex_coord = fract(st+grid);
 ```
 

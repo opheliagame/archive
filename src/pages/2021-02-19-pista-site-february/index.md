@@ -25,7 +25,7 @@ For our simple purposes we only need to know how to make circles and make them m
 
 The circle function takes as its input a vector describing the coordinate space of the canvas, a vector for the center of the circle in this coordinate space and a radius value. We're drawing the circle based on the distance between each pixel and the center of the circle. So a color will be calculated for each pixel based on how far it is from the center of the circle. I referred the Book of Shaders [shaping](https://thebookofshaders.com/05/) page myself because this part is not always easy to understand and it takes a lot of time and practice to develop the intuition that'll let you write amazing shaping functions in glsl. Bless us all, Mr Miyagi! 
 
-``` c++
+``` glsl
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -50,7 +50,7 @@ void main() {
 
 But for now, since we are not using the circle function inside `main` you should only see red if you run this shader. On with circles, now ⚫⚪🔴
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     float c = 1.0-circle(fract(st*2.0), vec2(0.5), 0.2);
@@ -64,13 +64,13 @@ You might be wondering what is this `fract` business we've got going here and so
 
 To make the smaller circle within the bigger circle, we'll call the `circle` function again, giving it the same coordinate space and a smaller radius, but we don't want it to be stationary. Let's set the location as a function of the uniform `u_time`. We want the small circle to move in a circle(yay circles!), so by using `u_time` as our angle, we can calculate the x and y location
 
-```c++
+```glsl
     x = cos(u_time) * radius
     y = sin(u_time) * radius
 ```
 Finally we will add 0.5 as an offset to center the smaller circle within the big circle. When finally setting `gl_FragColor` in the last line, we will multiply the values for both circles. This would be equivalent to an `and` operation, in shader terms, combining both the results. Also notice how we subtract from 1.0 with only the bigger circle and not the smaller one. You could try playing with this to get a better feel for how things are working. 
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     float c = 1.0-circle(fract(st*2.0), vec2(0.5), 0.2);
@@ -88,7 +88,7 @@ The only thing remaining now is to add mouse interaction 🐁 since we don't wan
 
 For this we'll first normalise the uniform `u_mouse` just like we normalised the coordinates. And then make a vector starting from the pixel position pointing towards the mouse. We can now use this vector to calculate an angle using inverse tangent. 
 
-```c++
+```glsl
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     vec2 m = u_mouse.xy/u_resolution.xy;
