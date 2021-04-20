@@ -19,6 +19,11 @@ body {
     overflow: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 a {
     text-decoration: none;
 }
