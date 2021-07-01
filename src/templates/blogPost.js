@@ -8,9 +8,10 @@ const Template = ({ data, pageContext }) => {
 	const html = data.markdownRemark.html;
 	const { next, prev } = pageContext;
 
-    const [height, setHeight] = useState(0);
     const ref = useRef(null);
+    const [height, setHeight] = useState(0);
     useEffect(() => {
+        document.body.style.setProperty('--scroll', 0.0 );
         setHeight(ref.current.scrollHeight);
     }, []);
     
@@ -29,27 +30,29 @@ const Template = ({ data, pageContext }) => {
                 </div>
                 <br />
                 <div className="blogpost" dangerouslySetInnerHTML={{ __html: html }} />
-                <p>
-                    {prev && (
-                        <Link to={`/${prev.frontmatter.path}`}>
-                            {prev.frontmatter.title}{' '}
-                            <span role="img" aria-label="point-left">
-                                👈{' '}
-                            </span>
-                            Previous
-                        </Link>
-                    )}
-                </p>
-                <p>
-                    {next && (
-                        <Link to={`/${next.frontmatter.path}`}>
-                            Next{' '}
-                            <span role="img" aria-label="point-right">
-                                👉
-                            </span>
-                            {next.frontmatter.title}
-                        </Link>
-                    )}
+                <p style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <span>
+                        {prev && (
+                            <Link to={`/${prev.frontmatter.path}`}>
+                                {prev.frontmatter.title}{' '}
+                                <span role="img" aria-label="point-left">
+                                    👈{' '}
+                                </span>
+                                Previous
+                            </Link>
+                        )}
+                    </span>
+                    <span>
+                        {next && (
+                            <Link to={`/${next.frontmatter.path}`}>
+                                Next{' '}
+                                <span role="img" aria-label="point-right">
+                                    👉
+                                </span>
+                                {next.frontmatter.title}
+                            </Link>
+                        )}
+                    </span>
                 </p>
             </div>
 		</Layout>

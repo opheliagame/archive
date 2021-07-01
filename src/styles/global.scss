@@ -124,6 +124,7 @@ a {
     background-size: cover;
 
     .card-item.title {
+        display: none;
         font-size: x-large;
         font-weight: bold;
         // padding-right: 0px;
@@ -231,7 +232,7 @@ a {
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
-    animation: progress 1s linear;
+    animation: progress 1s ease;
 }
 @keyframes progress {
     to {
