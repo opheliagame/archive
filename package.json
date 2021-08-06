@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios": "^0.21.1",
     "gatsby": "^3.3.1",
     "gatsby-image": "^3.3.0",
     "gatsby-plugin-ffmpeg": "^0.3.1",

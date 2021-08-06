@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Card({ children }) {
-  return <div className="main">{children}</div>
+export default function Card({ style, children }) {
+  return <div className="main" style={style}>{children}</div>
 }
 
