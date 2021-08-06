@@ -40,9 +40,10 @@ const IndexPage = ({ data }) => {
                 {postIndices.map((edgeIndex, index) => {  
                     const letters = "abcdefghijklmnopqrstuvwxyz"
                     const { frontmatter } = edges[edgeIndex].node;
+                    const heroImageIndex = Math.floor(Math.random()*frontmatter.heroImages.length)
                     const gridChildStyle = {
                         gridArea: letters[index],
-                        backgroundImage: `url(${frontmatter.img.childImageSharp.fluid.src})`
+                        backgroundImage: `url(${frontmatter.heroImages[heroImageIndex].childImageSharp.fluid.src})`
                     } 
                     return (
                         <Link 
@@ -73,6 +74,13 @@ export const query = graphql`
 						tags
 						excerpt
                         img {
+                            childImageSharp{
+                                fluid(maxWidth: 300) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                        heroImages {
                             childImageSharp{
                                 fluid(maxWidth: 300) {
                                     ...GatsbyImageSharpFluid

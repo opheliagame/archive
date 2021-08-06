@@ -3,7 +3,8 @@ path: "2021-07-07-mondrian"
 date: "2021-07-07"
 title: "Shall we fail at making a Mondrian!"
 tags: ['shader', 'drawing', '2021', 'july']
-img: "./outline.png"
+img: './outline.png'
+heroImages: ['./outline.png', './color1.png', './red-yellow-blue.png']
 ---
 
 I recently saw a [documentary](https://www.youtube.com/watch?v=WDWzY95EEbA&t=64s) about Mondrian and although the images of his paintings in the video were of not the best quality and there is an annoying watermark throughout, dare I say I maybe understood what Mondrian was trying to say. Having recently come across Vasudeo Gaitonde and S H Raza, I have come to appreciate color much more and how the right amount in the right places could really be something. Black and white is evergreen (sorry 😂) but imagine a world without color. 
