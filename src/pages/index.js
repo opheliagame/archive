@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import axios from 'axios';
+import { useAsync } from 'react-async';
 
 import Layout from '../components/layout';
 import '../components/card.scss';
@@ -8,7 +9,17 @@ import Card from '../components/card';
 import CSSGrid from '../components/cssgrid';
 import { QuadTree, Rectangle, Point } from '../components/quadtree';
 
-const IndexPage = ({ data }) => {
+const getPalette = async () => 
+    await fetch('https://cors-ophelia.herokuapp.com/http://colormind.io/api/', {
+        method: "post",
+        body: JSON.stringify({model: "default"})
+    })
+    .then(response => (response.ok ? response : Promise.reject(response)))
+    .then(data => data.json())
+    .then(json => Promise.resolve(json.result))
+
+
+const IndexPage = (markdownData) => {
     let grid;
     const getCSSGridStyle = () => {
         let qtree = new QuadTree(new Rectangle(200, 200, 200, 200), 2)
@@ -26,24 +37,23 @@ const IndexPage = ({ data }) => {
         return result
     }
 
-    const { edges } = data.allMarkdownRemark;
+    const { edges } = markdownData.data.allMarkdownRemark;
     const gridElementStyle = getCSSGridStyle() 
-    const blocks = new Array(grid.nCells - edges.length).fill(0)
-    const postIndices = new Array(grid.nCells).fill(0).map(i => Math.floor(Math.random()*edges.length))
-    const palette = axios.post('https://cors-ophelia.herokuapp.com/http://colormind.io/api/', {
-        model: "default"
-    }).then(response => response.data.result)
-
-	return (
-		<Layout>
+    const colorBlocks = new Array(grid.nCells - edges.length).fill(0)
+    const { data, error, isLoading } = useAsync({ promiseFn: getPalette })
+    
+    if (isLoading) return "Loading..."
+    if (error) return `Something went wrong: ${error.message}`
+    if (data) 
+    return (
+        <Layout>
             <Card style={gridElementStyle}>
-                {postIndices.map((edgeIndex, index) => {  
+                {edges.map((edge, index) => {  
                     const letters = "abcdefghijklmnopqrstuvwxyz"
-                    const { frontmatter } = edges[edgeIndex].node;
-                    const heroImageIndex = Math.floor(Math.random()*frontmatter.heroImages.length)
+                    const { frontmatter } = edge.node;
                     const gridChildStyle = {
                         gridArea: letters[index],
-                        backgroundImage: `url(${frontmatter.heroImages[heroImageIndex].childImageSharp.fluid.src})`
+                        backgroundImage: `url(${frontmatter.img.childImageSharp.fluid.src})`
                     } 
                     return (
                         <Link 
@@ -54,10 +64,21 @@ const IndexPage = ({ data }) => {
                             <p className="card-item title">{frontmatter.title}</p>
                         </Link>
                     );
-                })}  
+                })}
+                {colorBlocks.map((c, i) => {
+                    const letters = "abcdefghijklmnopqrstuvwxyz"
+                    const color = data[Math.floor(Math.random()*data.length)]
+                    const blockStyle = {
+                        gridArea: letters[edges.length+i],
+                        backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+                    }
+                    return (
+                        <div key={i} style={blockStyle}></div>
+                    )   
+                })}
             </Card>
-		</Layout>
-	);
+        </Layout>
+    );
 };
 
 export const query = graphql`
@@ -74,13 +95,6 @@ export const query = graphql`
 						tags
 						excerpt
                         img {
-                            childImageSharp{
-                                fluid(maxWidth: 300) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                            }
-                        }
-                        heroImages {
                             childImageSharp{
                                 fluid(maxWidth: 300) {
                                     ...GatsbyImageSharpFluid
