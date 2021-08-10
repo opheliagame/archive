@@ -3,7 +3,7 @@ path: 'hello-shader'
 date: '2021-02-19'
 title: 'Hello Shader!'
 tags: ['shader', '2021']
-img: './hero.png',
+img: './hero.png'
 heroImages: ['./hero.png', './processing-sketch.png']
 excerpt: ''
 ---
