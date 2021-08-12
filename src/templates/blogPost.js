@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { graphql, Link } from 'gatsby';
+// import BlogLayout from '../components/blogLayout';
 import Layout from '../components/layout';
 
 const Template = ({ data, pageContext }) => {
@@ -8,11 +9,15 @@ const Template = ({ data, pageContext }) => {
 	const html = data.markdownRemark.html;
 	const { next, prev } = pageContext;
 
-    const ref = useRef(null);
+    const blogBody = useRef(null);
     const [height, setHeight] = useState(0);
     useEffect(() => {
         document.body.style.setProperty('--scroll', 0.0 );
-        setHeight(ref.current.scrollHeight);
+    });
+    const measuredRef = useCallback(node => {
+        if (node !== null) {
+            setHeight(node.scrollHeight);
+        }
     }, []);
     
     const handleScroll = event => {
@@ -23,7 +28,7 @@ const Template = ({ data, pageContext }) => {
     
 	return (
 		<Layout >
-            <div className="blog-container" ref={ref} onScroll={handleScroll}>
+            <div className="blog-container" ref={measuredRef} onScroll={handleScroll}>
                 <h1 className="title">{title}</h1>
                 <div>
                     <em>{date}</em>

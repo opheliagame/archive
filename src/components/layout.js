@@ -15,6 +15,7 @@ import Header from "./header"
 import "./layout.scss"
 import CSSGrid from '../components/cssgrid';
 import { QuadTree, Rectangle, Point } from '../components/quadtree';
+import { Packery } from "packery"
 
 const getPalette = async () => 
     await fetch('https://cors-ophelia.herokuapp.com/http://colormind.io/api/', {
@@ -84,37 +85,33 @@ const Layout = ({ children }) => {
       return array;
     }
     let gridIDs = shuffle(grid.gridIDs)
-    
-    if (isLoading) return "Loading..."
-    if (error) return `Something went wrong: ${error.message}`
-    if (data)
+
     return (
         <>
         <div className="App">
             <Helmet>
                 <title>opheliagame</title>
+                <script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js" />
             </Helmet>
-        </div>
-        <div style={gridElementStyle}>
-            
 
-            {/* <Header siteTitle={siteData.site.siteMetadata?.title} style={{
-                gridArea: grid.gridIDs[0]
-            }} /> */}
+            <Header siteTitle={siteData.site.siteMetadata?.title} />
 
-            {/* <div className='progress' style={{
-                gridArea: grid.gridIDs[1]
-            }}></div> */}
-{/* 
-            <div className="footer" style={{
-                gridArea: grid.gridIDs[2]
-            }}>
+            <div className='progress'></div>
+
+            {children}
+
+            <div className="footer">
                 <small>
                 <a href="https://www.instagram.com/ophelia.game/">@opheliagame</a>, Built with
                 {` `}
                 <a href="https://www.gatsbyjs.com">Gatsby</a>
                 </small>
-            </div> */}
+            </div>
+        </div>
+        {/* <div style={gridElementStyle}>
+            
+
+           
 
             {children.map((post, index) => {
                 return (
@@ -136,7 +133,7 @@ const Layout = ({ children }) => {
                     <div key={index} style={blockStyle}></div>
                 )  
             })}
-        </div>
+        </div> */}
         </>
     )
 }

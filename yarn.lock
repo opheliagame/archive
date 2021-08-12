@@ -4450,6 +4450,11 @@
   "resolved" "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
   "version" "1.1.2"
 
+"desandro-matches-selector@^2.0.0":
+  "integrity" "sha1-cXvu1NwT59jzdi9wem1YpndCGOE="
+  "resolved" "https://registry.npmjs.org/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz"
+  "version" "2.0.2"
+
 "destroy@~1.0.4":
   "integrity" "sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA="
   "resolved" "https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz"
@@ -5214,6 +5219,11 @@
   "resolved" "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   "version" "1.8.1"
 
+"ev-emitter@^1.0.0":
+  "integrity" "sha512-ipiDYhdQSCZ4hSbX4rMW+XzNKMD1prg/sTvoVmSLkuQ1MVlwjJQQA+sW8tMYR3BLUr9KjodFV4pvzunvRhd33Q=="
+  "resolved" "https://registry.npmjs.org/ev-emitter/-/ev-emitter-1.1.1.tgz"
+  "version" "1.1.1"
+
 "event-emitter@^0.3.5":
   "integrity" "sha1-34xp7vFkeSPHFXuc6DhAYQsCzDk="
   "resolved" "https://registry.npmjs.org/event-emitter/-/event-emitter-0.3.5.tgz"
@@ -5756,6 +5766,13 @@
   "version" "3.2.0"
   dependencies:
     "semver-regex" "^2.0.0"
+
+"fizzy-ui-utils@^2.0.0":
+  "integrity" "sha512-CZXDVXQ1If3/r8s0T+v+qVeMshhfcuq0rqIFgJnrtd+Bu8GmDmqMjntjUePypVtjHXKJ6V4sw9zeyox34n9aCg=="
+  "resolved" "https://registry.npmjs.org/fizzy-ui-utils/-/fizzy-ui-utils-2.0.7.tgz"
+  "version" "2.0.7"
+  dependencies:
+    "desandro-matches-selector" "^2.0.0"
 
 "flat-cache@^3.0.4":
   "integrity" "sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg=="
@@ -6554,6 +6571,11 @@
   "version" "2.1.0"
   dependencies:
     "npm-conf" "^1.1.0"
+
+"get-size@^2.0.2":
+  "integrity" "sha512-lXNzT/h/dTjTxRbm9BXb+SGxxzkm97h/PCIKtlN/CBCxxmkkIVV21udumMS93MuVTDX583gqc94v3RjuHmI+2Q=="
+  "resolved" "https://registry.npmjs.org/get-size/-/get-size-2.0.3.tgz"
+  "version" "2.0.3"
 
 "get-stdin@^4.0.1":
   "integrity" "sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4="
@@ -9898,6 +9920,15 @@
   "resolved" "https://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz"
   "version" "1.0.2"
 
+"outlayer@^2.0.0":
+  "integrity" "sha1-KYY7beEOpdrf/8rfoNcokHOH6aI="
+  "resolved" "https://registry.npmjs.org/outlayer/-/outlayer-2.1.1.tgz"
+  "version" "2.1.1"
+  dependencies:
+    "ev-emitter" "^1.0.0"
+    "fizzy-ui-utils" "^2.0.0"
+    "get-size" "^2.0.2"
+
 "ow@^0.17.0":
   "integrity" "sha512-i3keDzDQP5lWIe4oODyDFey1qVrq2hXKTuTH2VpqwpYtzPiKZt2ziRI4NBQmgW40AnV5Euz17OyWweCb+bNEQA=="
   "resolved" "https://registry.npmjs.org/ow/-/ow-0.17.0.tgz"
@@ -10103,6 +10134,14 @@
     "registry-auth-token" "^4.0.0"
     "registry-url" "^5.0.0"
     "semver" "^6.2.0"
+
+"packery@^2.1.2":
+  "integrity" "sha512-Coc+8Atz03c0iu1RK0PZIJMKcKrE4i9Z8UBBywqz7Dhy40mMPM5wMQfqO9P2eqFP+lxKjGMTHgRAwjBQc+AQ5w=="
+  "resolved" "https://registry.npmjs.org/packery/-/packery-2.1.2.tgz"
+  "version" "2.1.2"
+  dependencies:
+    "get-size" "^2.0.2"
+    "outlayer" "^2.0.0"
 
 "pako@^1.0.5":
   "integrity" "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="

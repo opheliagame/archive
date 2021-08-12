@@ -12,7 +12,7 @@ import { QuadTree, Rectangle, Point } from '../components/quadtree';
 const getPalette = async ({ qtree, setGridIDs }) => {
     return await fetch('https://cors-ophelia.herokuapp.com/http://colormind.io/api/', {
         method: "post",
-        body: JSON.stringify({model: "default"})
+        body: JSON.stringify({model: "ui"})
     })
     .then(response => (response.ok ? response : Promise.reject(response)))
     .then(data => data.json())
@@ -54,6 +54,24 @@ const getCSSGridStyle = (qtree) => {
     return result
 }
 
+function shuffle(array) {
+    var currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
+
 
 const IndexPage = (markdownData) => {
     
@@ -76,46 +94,56 @@ const IndexPage = (markdownData) => {
     if (error) return `Something went wrong: ${error.message}`
     if (data) {
         console.log(gridIDs)
-        const colorBlocks = new Array(gridIDs.length - edges.length).fill(0)
+        let colorBlocks = new Array(gridIDs.length - edges.length).fill(0)
+
+        const postBlocks = edges.map((edge, index) => {  
+            let gridID = "abcdefghijklmnopqrstuvwxyz"[index]
+            // while(taken.includes(gridID)) gridID = gridIDs[Math.floor(Math.random()*gridIDs.length)]
+            // setTaken(prev => [...prev, gridID])
+            const { frontmatter } = edge.node;
+            const sizes = [ 200, 150, 300, 250]
+            const gridChildStyle = {
+                // gridArea: gridID,
+                width: sizes[Math.floor(Math.random()*sizes.length)],
+                height: sizes[Math.floor(Math.random()*sizes.length)],
+                backgroundImage: `url(${frontmatter.img.childImageSharp.fluid.src})`
+            } 
+           
+            console.log(taken)
+            return (
+                <Link 
+                    key={`post${index}`} 
+                    to={frontmatter.path} 
+                    className="grid-item"
+                    style={gridChildStyle}>
+                </Link>
+            );
+        })
+        colorBlocks = colorBlocks.map((c, index) => {
+            const gridID = "abcdefghijklmnopqrstuvwxyz"[edges.length+index]
+            const color = data.palette[Math.floor(Math.random()*data.palette.length)]
+            const sizes = [ 100, 200, 150, 300]
+            const blockStyle = {
+                // gridArea: gridID,
+                width: sizes[Math.floor(Math.random()*sizes.length)],
+                height: sizes[Math.floor(Math.random()*sizes.length)],
+                backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+            }
+            console.log(gridIDs.includes(gridID))
+            return (
+                <div key={`color${index}`} 
+                style={blockStyle}
+                className="grid-item">  
+                </div>
+            )   
+        })
+
+    let blocks = [...postBlocks]
+    blocks.push(...colorBlocks)
+    blocks = shuffle(blocks)
     return (
         <Layout>
-            
-                {edges.map((edge, index) => {  
-                    let gridID = "abcdefghijklmnopqrstuvwxyz"[index]
-                    // while(taken.includes(gridID)) gridID = gridIDs[Math.floor(Math.random()*gridIDs.length)]
-                    // setTaken(prev => [...prev, gridID])
-                    const { frontmatter } = edge.node;
-                    const gridChildStyle = {
-                        // gridArea: gridID,
-                        backgroundImage: `url(${frontmatter.img.childImageSharp.fluid.src})`
-                    } 
-                   
-                    console.log(taken)
-                    return (
-                        <Link 
-                            key={index} 
-                            to={frontmatter.path} 
-                            className="block-link"
-                            style={gridChildStyle}>
-                        </Link>
-                    );
-                })}
-                {/* {colorBlocks.map((c, index) => {
-                    const gridID = "abcdefghijklmnopqrstuvwxyz"[edges.length+index]
-                    const color = data.palette[Math.floor(Math.random()*data.palette.length)]
-                    const blockStyle = {
-                        gridArea: gridID,
-                        backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2]})`
-                    }
-                    console.log(gridIDs.includes(gridID))
-                    return (
-                        <div key={index} style={blockStyle}>
-
-                        
-                        </div>
-                    )   
-                })} */}
-           
+            <Card>{blocks}</Card>
         </Layout>
     );
             }
