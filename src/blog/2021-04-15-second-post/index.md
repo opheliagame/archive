@@ -1,8 +1,13 @@
 ---
-path: '2021-04-15-pixelate'
-date: '2021-04-15'
-title: 'Texture land 👾'
-tags: ['shader', 'texture', '2021', 'april']
+path: 2021-04-15-pixelate
+date: 2021-04-15
+title: Texture land 👾
+layout: layout
+tags: 
+    - shader 
+    - texture 
+    - 2021 
+    - april
 img: './hero.png'
 heroImages: ['./hero.png', './mess3.png', './mess1.png']
 excerpt: ''

@@ -1,8 +1,11 @@
 ---
-path: 'hello-shader'
-date: '2021-02-19'
-title: 'Hello Shader!'
-tags: ['shader', '2021']
+path: hello-shader
+date: 2021-02-19
+title: Hello Shader!
+layout: layout
+tags: 
+    - shader
+    - 2021
 img: './hero.png'
 heroImages: ['./hero.png', './processing-sketch.png']
 excerpt: ''

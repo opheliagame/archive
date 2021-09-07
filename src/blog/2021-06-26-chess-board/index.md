@@ -1,8 +1,13 @@
 ---
-path: "2021-06-26-chess"
-date: "2021-06-26"
-title: "Let's make a Chess Board"
-tags: ['shader', 'drawing', '2021', 'june']
+path: 2021-06-26-chess
+date: 2021-06-26
+title: Let's make a Chess Board
+layout: layout
+tags: 
+  - shader
+  - drawing
+  - 2021
+  - june
 img: './chess-board.png'
 heroImages: ['./chess-board.png', './shift-cols.png']
 ---

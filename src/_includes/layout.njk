@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="author" content="opheliagame">
+  <meta name="description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="">
+  <meta property="og:title" content="opheliagame">
+  <meta property="twitter:description" content="P">
+  <meta property="twitter:title" content="opheliagame">
+  <meta property="twitter:creator" content="@anushkatr">
+
+  <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-material-light.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/style.css' | url }}" >
+  <link rel="stylesheet" href="{{ '/extra.css' | url }}" >
+
+  <title>opheliagame</title>
+</head>
+<body>
+  
+  <div class="md:container md:mx-auto px-6 md:px-32">
+    {% include "_partials/header.njk" %}
+    {% include "_partials/nav.njk" %}
+    {{ content | safe }}
+  </div>
+
+</body>
+</html>

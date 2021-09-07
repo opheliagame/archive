@@ -1,8 +1,13 @@
 ---
-path: "2021-07-07-mondrian"
-date: "2021-07-07"
-title: "Shall we fail at making a Mondrian!"
-tags: ['shader', 'drawing', '2021', 'july']
+path: 2021-07-07-mondrian
+date: 2021-07-07
+title: Shall we fail at making a Mondrian!
+layout: layout
+tags: 
+  - shader
+  - drawing
+  - 2021
+  - july
 img: './outline.png'
 heroImages: ['./outline.png', './color1.png', './red-yellow-blue.png']
 ---
