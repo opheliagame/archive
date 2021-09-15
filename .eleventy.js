@@ -25,6 +25,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('src/static/css/extra.css')
   eleventyConfig.addPassthroughCopy({ 'src/static/css/extra.css': '/extra.css' })
 
+  eleventyConfig.addPassthroughCopy("src/static/assets/");
+  eleventyConfig.addPassthroughCopy("src/static/js/");
+
+
   // image optimisation using eleventy-img
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortCode);
   eleventyConfig.addLiquidShortcode("image", imageShortCode);

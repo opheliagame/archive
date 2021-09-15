@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="author" content="opheliagame">
+  <meta name="description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="">
+  <meta property="og:title" content="opheliagame">
+  <meta property="twitter:description" content="P">
+  <meta property="twitter:title" content="opheliagame">
+  <meta property="twitter:creator" content="@anushkatr">
+
+  <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-material-light.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/style.css' | url }}">
+  <link rel="stylesheet" href="{{ '/extra.css' | url }}">
+
+  <script src="{{ '/static/js/libs/p5.min.js' | url }}"></script>
+  <script src="{{ '/static/js/libs/p5.sound.min.js' | url }}"></script>
+  
+  <script src="{{ '/static/js/game/user.js' | url }}"></script>
+  <script src="{{ '/static/js/game/main.js' | url }}"></script>
+
+  <title>opheliagame</title>
+</head>
+<body>
+  
+  <div class="md:container md:mx-auto px-2 md:px-6">
+    <div class="flex justify-around">
+      {% include "_partials/header.njk" %}
+      {% include "_partials/nav.njk" %}
+    </div>
+    {{ content | safe }}
+
+    <div id="canvasDiv" class="flex justify-center items-center">
+    </div>
+
+    <div class="visible md:invisible absolute h-16 w-16 bottom-0 right-2 md:right-6
+                grid grid-rows-3 grid-cols-3">
+      
+      <button class="col-start-2 row-start-1" onclick="buttonPressed('up')">👆️</button>
+      <button class="col-start-3 row-start-2" onclick="buttonPressed('right')">👉️</button>
+      <button class="col-start-1 row-start-2" onclick="buttonPressed('left')">👈️</button>
+      <button class="col-start-2 row-start-3" onclick="buttonPressed('down')">👇️</button>
+    </div>
+    
+    <script src="{{ '/static/js/game/game.js' | url }}"></script>
+   
+    <script>
+      function buttonPressed(key) {
+        switch(key) {
+          case 'left':
+            user.move('left')
+            break
+          case 'right': 
+            user.move('right')
+            break
+          case 'up':
+            user.move('up')
+            break
+          case 'down':
+            user.move('down')
+            break
+          default:
+            return
+        }
+      }
+    </script>
+
+  </div>
+
+</body>
+</html>
