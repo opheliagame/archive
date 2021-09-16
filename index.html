@@ -29,9 +29,16 @@
 </head>
 <body>
   
-  <div class="md:container md:mx-auto px-2 md:px-6">
-    <div class="flex justify-around">
-      <header class="flex justify-between lg:justify-center items-center py-8 px-2">
+  <div class="absolute inset-0 w-screen h-screen -z-10">
+    <div id="canvasDiv" class="w-full h-full flex items-center justify-center">
+
+    </div>
+  </div>
+  <div class="md:container md:mx-auto h-screen 
+              flex flex-col justify-between items-center
+              px-2 md:px-6">
+    <div class="flex justify-around w-full">
+      <header class="flex justify-between lg:justify-center items-center py-4 md:py-8 px-2">
   <a class="text-black no-underline" href="/">
     <h1 class="text-2xl md:text-3xl font-bold">
       opheliagame
@@ -51,16 +58,17 @@
 
 
 
-    <div id="canvasDiv" class="flex justify-center items-center">
-    </div>
 
-    <div class="visible md:invisible absolute h-16 w-16 bottom-0 right-2 md:right-6
-                grid grid-rows-3 grid-cols-3">
+    <div class="px-2 py-8 ">
+      <div class="visible md:invisible w-20 h-20
+                  grid grid-rows-3 grid-cols-3
+                  rounded-full bg-gray-200">
       
-      <button class="col-start-2 row-start-1" onclick="buttonPressed('up')">👆️</button>
-      <button class="col-start-3 row-start-2" onclick="buttonPressed('right')">👉️</button>
-      <button class="col-start-1 row-start-2" onclick="buttonPressed('left')">👈️</button>
-      <button class="col-start-2 row-start-3" onclick="buttonPressed('down')">👇️</button>
+        <button class="col-start-2 row-start-1 outline-none" onclick="buttonPressed('up')">🔼</button>
+        <button class="col-start-3 row-start-2 outline-none" onclick="buttonPressed('right')">▶️</button>
+        <button class="col-start-1 row-start-2 outline-none" onclick="buttonPressed('left')">◀️</button>
+        <button class="col-start-2 row-start-3 outline-none" onclick="buttonPressed('down')">🔽</button>
+      </div>
     </div>
     
     <script src="/static/js/game/game.js"></script>
