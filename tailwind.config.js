@@ -49,7 +49,8 @@ module.exports = {
       yellow: colors.amber,
       black: colors.black,
       white: colors.white,
-      blue: colors.blue
+      blue: colors.blue,
+      gray: colors.coolGray
     },
     animation: {
       'spin-slow': 'spin 8s linear infinite',

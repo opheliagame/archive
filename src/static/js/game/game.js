@@ -1,11 +1,10 @@
-let res = 16+8
-let rows = 20
-let cols = 20
+let res = 16+8, rows, cols
 let user, game, sprite, sprites
 let urlPrefix = '/static'
+let buildingJson
 
 function preload() {
-  buildingJson = loadJSON(urlPrefix + '/assets/building.json')
+  buildingJson = loadJSON(urlPrefix + '/assets/building-small.json')
   tileset = loadImage(urlPrefix + '/assets/tilation-indoor.png')
   sprites = [
     loadImage(urlPrefix + '/assets/character_animation.png'),
@@ -18,7 +17,9 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(res*rows, res*cols)
+  rows = buildingJson.rows
+  cols = buildingJson.cols
+  let canvas = createCanvas(res*cols, res*rows)
   canvas.parent('canvasDiv')
 
   let g = createGraphics(32*8, 32*2)
