@@ -1,0 +1,23 @@
+
+
+{% set posts = collections.shader | reverse %}
+{% for post in posts %}
+<div>
+  <a href="{{post.url}}">{{ post.data.title }}</a>
+</div>
+{% endfor %} 
+
+{# {% set htmlTitle = item.title %}
+
+{% block content %}
+
+{% for item in pagination.items %} 
+  {% if loop.first %}<ul>{% endif %}
+  <li>
+    <h2><a href="/blog/{{ item.slug }}">{{ item.title }}</a></h2>
+    
+  </li>
+  {% if loop.last %}</ul>{% endif %}
+{% endfor %}
+
+{% endblock %} #}

@@ -43,14 +43,10 @@ module.exports = {
       gridTemplateColumns: {
         'speaker-md': '2fr 1fr',
         'speaker': '1.5fr 0.5fr 1fr'
+      },
+      backgroundPosition: {
+        'left-bottom': 'left bottom -0.75rem',
       }
-    },
-    colors: {
-      yellow: colors.amber,
-      black: colors.black,
-      white: colors.white,
-      blue: colors.blue,
-      gray: colors.coolGray
     },
     animation: {
       'spin-slow': 'spin 8s linear infinite',

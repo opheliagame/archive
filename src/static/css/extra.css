@@ -1,3 +1,25 @@
 .language-glsl {
   font-size: smaller;
 }
+ 
+/* ::-webkit-scrollbar {
+  width: 0;  
+  background: transparent;  
+}  */
+
+.markdown-list li::marker {
+  content: "> ";
+}
+
+.markdown-list li {
+  padding: 0.2rem;
+}
+
+.markdown-list {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.green-border {
+  border-image: repeating-linear-gradient(30deg, #4ade80, #fff) 60;
+}

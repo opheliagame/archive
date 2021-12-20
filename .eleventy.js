@@ -1,5 +1,8 @@
 const Image = require('@11ty/eleventy-img')
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdownIt = require('markdown-it')
+const markdownItClass = require('@toycode/markdown-it-class')
+const mila = require('markdown-it-link-attributes')
 
 async function imageShortCode(src, alt, sizes) {
   let metadata = await Image(src, {
@@ -33,6 +36,24 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortCode);
   eleventyConfig.addLiquidShortcode("image", imageShortCode);
   eleventyConfig.addJavaScriptFunction("image", imageShortCode);
+
+  const mapping = {
+    ul: ['markdown-list', 'list-inside', 'ml-2', 'self-start'],
+    p: ['py-2'],
+    h2: ['text-lg'],
+    h3: ['text-lg', 'font-semibold'],
+  }
+
+  const milaOptions = {
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }
+  }
+  const md = markdownIt({linkify: true, html: true})
+  md.use(mila, milaOptions)
+  md.use(markdownItClass, mapping)
+  eleventyConfig.setLibrary('md', md)
 
   return {
     dir: {
