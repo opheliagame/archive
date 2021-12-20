@@ -16,28 +16,18 @@
 
   <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-material-light.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/extra.css">
-
-  <script src="/static/js/libs/p5.min.js"></script>
-  <script src="/static/js/libs/p5.sound.min.js"></script>
-  
-  <script src="/static/js/game/user.js"></script>
-  <script src="/static/js/game/main.js"></script>
+  <link rel="stylesheet" href="/style.css" >
+  <link rel="stylesheet" href="/extra.css" >
 
   <title>opheliagame</title>
 </head>
-<body>
+<body style="background-color: #ffd6e0;">
   
-  <div class="absolute inset-0 w-screen h-screen -z-10">
-    <div id="canvasDiv" class="w-full h-full flex items-center justify-center">
-
-    </div>
-  </div>
-  <div class="md:container md:mx-auto h-screen 
+  <div class="md:container md:mx-auto
               flex flex-col justify-between items-center
-              px-2 md:px-6">
-    <div class="flex justify-around w-full">
+              px-4 md:px-32">
+    <div class="flex justify-between w-full
+                ">
       <header class="flex justify-between lg:justify-center items-center py-4 md:py-8 px-2">
   <a class="text-black no-underline" href="/">
     <h1 class="text-2xl md:text-3xl font-bold">
@@ -46,53 +36,54 @@
   </a>
 </header>
       <div class="flex flex-wrap gap-y-2 py-2 lg:px-24 col-span-full justify-between items-center text-xl">
-  <a class="text-black no-underline py-1 px-2 md:py-2 md:px-4" href="/">
-    <span>about</span>
+  <a class="py-1 px-2 md:py-2 md:px-4" href="/">
+    <span class="link-primary">about</span>
   </a>
   <a class="text-black no-underline py-1 px-2 md:py-2 md:px-4" href="/blog">
-    <span>blog</span>
+    <span class="link-primary">blog</span>
   </a>
 </div>
+
     </div>
-    
 
-
-
-
-    <div class="px-2 py-8 ">
-      <div class="visible md:invisible w-20 h-20
-                  grid grid-rows-3 grid-cols-3
-                  rounded-full bg-gray-200">
+    <div class="px-2 w-full">
       
-        <button class="col-start-2 row-start-1 outline-none" onclick="buttonPressed('up')">🔼</button>
-        <button class="col-start-3 row-start-2 outline-none" onclick="buttonPressed('right')">▶️</button>
-        <button class="col-start-1 row-start-2 outline-none" onclick="buttonPressed('left')">◀️</button>
-        <button class="col-start-2 row-start-3 outline-none" onclick="buttonPressed('down')">🔽</button>
-      </div>
+<div>Anushka aka opheliagame is a web developer and technical art enthusiast. Coding, for her, continues to be a medium of creative expression, whether it is making websites or shader sketches. She was a part of the freefall exhibition curated by dra.ft for the Electronic Literature Organisation 2021 conference, during which she worked with text and archival platforms. As a visual artist, she performed her first ever visual set at Algorave for their Third Anniversary Party. She was also one of the organisers of Processing Community Day India 2021 and continues to draw inspiration from this wonderful community of creative coding practitioners.</div>
+
+
+
+
+
+<div>
+  <a href="/blog/2021-07-07-mondrian/">Shall we fail at making a Mondrian!</a>
+</div>
+
+<div>
+  <a href="/blog/2021-06-26-chess-board/">Let&#39;s make a Chess Board</a>
+</div>
+
+<div>
+  <a href="/blog/2021-04-15-second-post/">Texture land 👾</a>
+</div>
+
+<div>
+  <a href="/blog/2021-02-19-pista-site-february/">Hello Shader!</a>
+</div>
+ 
+
+
     </div>
-    
-    <script src="/static/js/game/game.js"></script>
-   
-    <script>
-      function buttonPressed(key) {
-        switch(key) {
-          case 'left':
-            user.move('left')
-            break
-          case 'right': 
-            user.move('right')
-            break
-          case 'up':
-            user.move('up')
-            break
-          case 'down':
-            user.move('down')
-            break
-          default:
-            return
-        }
-      }
-    </script>
+
+    <div class="w-full
+                py-4 px-2">
+      <footer>
+  <ul class="markdown-list list-inside self-start">
+    <li><a class="link-primary" href="https://www.instagram.com/ophelia.game/">instagram</a></li>
+    <li><a class="link-primary" href="https://twitter.com/anushkatr">twitter</a></li>
+  </ul>
+</footer>
+
+    </div>
 
   </div>
 

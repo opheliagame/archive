@@ -2,7 +2,7 @@
 path: hello-shader
 date: 2021-02-19
 title: Hello Shader!
-layout: layout
+layout: base
 tags: 
     - shader
     - 2021

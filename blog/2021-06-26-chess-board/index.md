@@ -2,7 +2,7 @@
 path: 2021-06-26-chess
 date: 2021-06-26
 title: Let's make a Chess Board
-layout: layout
+layout: base
 tags: 
   - shader
   - drawing
