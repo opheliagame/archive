@@ -31,3 +31,7 @@ body {
 svg {
   height: 70vh;
 }
+
+.language-glsl {
+  font-size: smaller;
+}
