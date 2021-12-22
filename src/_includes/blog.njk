@@ -1,11 +1,14 @@
 
 
 {% set posts = collections.shader | reverse %}
-{% for post in posts %}
-<div>
-  <a href="{{post.url}}">{{ post.data.title }}</a>
-</div>
-{% endfor %} 
+<h3 class="text-lg font-semibold">Writings</h3>
+<ul class="markdown-list list-inside self-start">
+  {% for post in posts %}
+  <li class="text-sm">
+    <a class="link-primary" href="{{post.url}}">{{ post.data.title }}</a>
+  </li>
+  {% endfor %}
+</ul> 
 
 {# {% set htmlTitle = item.title %}
 

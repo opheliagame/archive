@@ -23,3 +23,11 @@
 .green-border {
   border-image: repeating-linear-gradient(30deg, #4ade80, #fff) 60;
 }
+
+body {
+  font-family: 'Inconsolata';
+}
+
+svg {
+  height: 70vh;
+}

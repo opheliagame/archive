@@ -3,6 +3,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
 const mila = require('markdown-it-link-attributes')
+const svgContents = require("eleventy-plugin-svg-contents")
 
 async function imageShortCode(src, alt, sizes) {
   let metadata = await Image(src, {
@@ -23,6 +24,7 @@ async function imageShortCode(src, alt, sizes) {
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(svgContents)
 
   eleventyConfig.addPassthroughCopy("src/blog/");
   eleventyConfig.addWatchTarget('src/static/css/extra.css')
