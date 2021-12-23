@@ -35,3 +35,12 @@ svg {
 .language-glsl {
   font-size: smaller;
 }
+
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
+:not(svg) {
+  transform-origin: 0px 0px;
+}
