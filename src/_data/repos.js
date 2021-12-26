@@ -1,0 +1,19 @@
+const github = require('octonode')
+const client = github.client('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')
+const me = client.user('opheliagame')
+
+async function getRepositories() {
+  let repos = (await me.reposAsync())[0]
+              .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
+  return await Promise.all(repos.map(async (r) => {
+    const repo = client.repo(r.full_name)
+    const langs = (await repo.languagesAsync())[0]
+    let result = {
+      ...r, 
+      languages: Object.keys(langs)
+    }
+    return result
+  }))
+}
+
+module.exports = getRepositories

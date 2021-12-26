@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "rm -rf _site && mkdir _site && postcss src/static/css/style.css > _site/style.css && eleventy --serve",
+    "debug": "rm -rf _site && mkdir _site && postcss src/static/css/style.css > _site/style.css && DEBUG=Eleventy* eleventy --serve",
     "build": "rm -rf _site && env NODE_ENV=production npx eleventy && NODE_ENV=production postcss src/static/css/style.css > _site/style.css",
     "start": "rm -rf _site && eleventy && NODE_ENV=production postcss src/static/css/style.css > _site/style.css"
   },
@@ -25,10 +26,13 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
     "@toycode/markdown-it-class": "^1.2.4",
     "autoprefixer": "^10.3.4",
+    "axios": "^0.24.0",
     "cssnano": "^5.0.8",
     "eleventy-plugin-svg-contents": "^0.7.0",
     "markdown-it": "^12.3.0",
     "markdown-it-link-attributes": "^3.0.0",
+    "node-fetch": "^2.6.6",
+    "octonode": "^0.10.2",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.2.10"
