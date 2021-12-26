@@ -1,5 +1,6 @@
+require('dotenv').config()
 const github = require('octonode')
-const client = github.client('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')
+const client = github.client(process.env.PAT)
 const me = client.user('opheliagame')
 
 async function getRepositories() {
