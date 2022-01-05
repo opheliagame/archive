@@ -8,7 +8,7 @@ layout: main
   {% for post in posts %}
   <li class="text-sm">
     <a class="link-primary" href="{{post.url}}">{{ post.data.title }}</a>
-    <div>
+    <div class="flex flex-row">
       {% for tag in post.data.tags %}
         <main-tag name={{tag}}></main-tag>
       {% endfor %}

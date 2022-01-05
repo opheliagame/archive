@@ -2,7 +2,7 @@
 path: 2021-07-07-mondrian
 date: 2021-07-07
 title: Shall we fail at making a Mondrian!
-layout: main
+layout: blog
 tags: 
   - shader
   - drawing

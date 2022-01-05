@@ -12,7 +12,11 @@ export function createTagComponent ({ createComponent, html, renderer }) {
     },
     render() {
       return html`
-        <span class="px-1 rounded-full border border-green-300">${this.props.name}</span>
+        <div class="pr-2">
+          <span class="text-xs bg-lime-200 px-1 rounded-full border border-green-300">
+            ${this.props.name}
+          </span>
+        </div>
       `
     }
   })

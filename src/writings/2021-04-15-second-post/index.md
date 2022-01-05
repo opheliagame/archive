@@ -2,7 +2,7 @@
 path: 2021-04-15-pixelate
 date: 2021-04-15
 title: Texture land 👾
-layout: main
+layout: blog
 tags: 
     - shader 
     - texture 

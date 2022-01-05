@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "description": "opheliagame",
   "scripts": {
-    "prebuild": "rimraf build",
-    "build": "run-p build:*",
+    "prebuild": "rimraf build && mkdir -p build/assets/css",
+    "build": "run-s build:css build:js build:app",
+    "build:css": "postcss src/assets/css/tailwind.css > build/assets/css/style.css",
     "build:app": "cross-env NODE_ENV=production eleventy --input=src --output=build",
     "build:js": "rollup -i src/assets/js/main.mjs -o build/assets/js/main.mjs -f es -p \"terser={mangle: { keep_fnames: true, toplevel: true, module: true }}\" -p \"filesize={}\"",
     "lint": "standard \"src/**/*.mjs\"",
     "predev": "rimraf tmp && mkdir -p tmp/assets/css",
-    "dev": "npm run watch:style && npm run watch:app",
+    "dev": "npm run watch:css && npm run watch:app",
     "test": "ava test/**/*.spec.mjs",
     "watch:app": "cross-env NODE_ENV=development eleventy --input=src --output=tmp --serve",
-    "watch:style": "postcss src/assets/css/tailwind.css > tmp/assets/css/style.css"
+    "watch:css": "postcss src/assets/css/tailwind.css > tmp/assets/css/style.css"
   },
   "author": "",
   "license": "MIT",

@@ -1,0 +1,46 @@
+.language-glsl {
+  font-size: smaller;
+}
+ 
+/* ::-webkit-scrollbar {
+  width: 0;  
+  background: transparent;  
+}  */
+
+.markdown-list li::marker {
+  content: "> ";
+}
+
+.markdown-list li {
+  padding: 0.2rem;
+}
+
+.markdown-list {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.green-border {
+  border-image: repeating-linear-gradient(30deg, #4ade80, #fff) 60;
+}
+
+body {
+  font-family: 'Inconsolata';
+}
+
+svg {
+  height: 70vh;
+}
+
+.language-glsl {
+  font-size: smaller;
+}
+
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
+:not(svg) {
+  transform-origin: 0px 0px;
+}

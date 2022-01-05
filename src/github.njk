@@ -22,7 +22,7 @@ pagination:
         </h3>
       </a>
       <p class="text-xs"> {{ item.description }} </p>
-      <div class="text-xs">
+      <div class="text-xs flex flex-row">
         {% for lang in item.languages %}
           <main-tag name={{lang}}></main-tag>
         {% endfor %}

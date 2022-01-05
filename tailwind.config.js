@@ -7,6 +7,11 @@ module.exports = {
     './src/**/*.html',
   ],
   theme: {
+    colors: {
+      pink: colors.pink,
+      green: colors.green,
+      lime: colors.lime
+    },
     fontSize: {
       'xxs': '.50rem',
       'xs': '.75rem',
@@ -27,22 +32,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ["'Poppins'", 'sans-serif']
-      },
-      gridTemplateRows: {
-        // Simple 8 row grid
-       '8': 'repeat(8, minmax(0, 1fr))',
-
-        // Complex site-specific row configuration
-       'layout': 'auto 1fr',
-
-       'speaker-md': '1.5rem auto 1fr auto 1.5rem',
-
-       'schedule': 'repeat(6, 1fr)',
-
-      },
-      gridTemplateColumns: {
-        'speaker-md': '2fr 1fr',
-        'speaker': '1.5fr 0.5fr 1fr'
       },
       backgroundPosition: {
         'left-bottom': 'left bottom -0.75rem',
