@@ -2,7 +2,7 @@
 path: 2021-06-26-chess
 date: 2021-06-26
 title: Let's make a Chess Board
-layout: base
+layout: main
 tags: 
   - shader
   - drawing
@@ -50,7 +50,7 @@ float cols = step(0.5, grid.x);
 
 This won't look right because our space ranges from 0-factor and we'd like it to be in columns of 0-1 lined next to each other to be able to use `step`
 
-![step function](./step1.png)
+{% image "./src/writings/2021-06-26-chess-board/step1.png", "step function", "(min-width: 30em) 50vw, 100vw" %}
 
 Behold `fract` 👇
 
@@ -58,7 +58,7 @@ Behold `fract` 👇
 float cols = step(0.5, fract(grid.x));
 ```
 
-![step plus fract function](./step-fract.png)
+{% image "./src/writings/2021-06-26-chess-board/step-fract.png", "step plus fract function", "(min-width: 30em) 50vw, 100vw" %}
 
 Now we figure we just need to repeat this process for rows and we've got it right?
 
@@ -74,7 +74,7 @@ void main() {
 }
 ```
 
-![rows plus cols](./rows-cols.png)
+{% image "./src/writings/2021-06-26-chess-board/rows-cols.png", "rows plus cols", "(min-width: 30em) 50vw, 100vw" %}
 
 Of course it could not be this simple, now could it. If you play with the rows and cols and see what is in them individually, you'll realise that they don't line up in the way we want them. And so multiplying `rows` and `cols` also does not help. 
 
@@ -85,7 +85,7 @@ float rows = step(0.5, fract(grid.y)) == 0.0 ? 0.2 : 0.0;
 float cols = step(0.5, fract(grid.x + rows));
 ```
 
-![shifting cols](./shift-cols.png)
+{% image "./src/writings/2021-06-26-chess-board/shift-cols.png", "shifting cols", "(min-width: 30em) 50vw, 100vw" %}
 
 To break this down a bit, the first line uses a `ternary operator` which is a shortform for an `if statement` or a way for us to make a decision based on outcome of a condition. We could also rewrite it as 
 
@@ -100,7 +100,7 @@ So each alernate row seems to be shifting to the left by `0.2` because we have i
 
 And tada 🎉, by changing 0.2 to 0.5, we have our chess board! 
 
-![chess board!](./chess-board.png)
+{% image "./src/writings/2021-06-26-chess-board/chess-board.png", "chess board!", "(min-width: 30em) 50vw, 100vw" %}
 
 There is a whole bunch to explore with these patterns, so please change values wherever you like and make new ones 🎨 Hoping to come back soon with chess pieces(or start simpler, go pieces xD) 
 

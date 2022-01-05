@@ -1,26 +1,14 @@
+---
+layout: main
 
+---
 
-{% set posts = collections.shader | reverse %}
-<h3 class="text-lg font-semibold">Writings</h3>
-<ul class="markdown-list list-inside self-start">
-  {% for post in posts %}
-  <li class="text-sm">
-    <a class="link-primary" href="{{post.url}}">{{ post.data.title }}</a>
-  </li>
+<h3 class="text-lg font-semibold uppercase">{{ title }}</h3>
+
+<div class="flex flex-row-reverse">
+  {% for tag in tags %}
+    <main-tag name={{tag}}></main-tag>
   {% endfor %}
-</ul> 
+</div>
 
-{# {% set htmlTitle = item.title %}
-
-{% block content %}
-
-{% for item in pagination.items %} 
-  {% if loop.first %}<ul>{% endif %}
-  <li>
-    <h2><a href="/blog/{{ item.slug }}">{{ item.title }}</a></h2>
-    
-  </li>
-  {% if loop.last %}</ul>{% endif %}
-{% endfor %}
-
-{% endblock %} #}
+{{ content | safe }}

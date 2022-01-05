@@ -2,7 +2,7 @@
 path: 2021-04-15-pixelate
 date: 2021-04-15
 title: Texture land 👾
-layout: base
+layout: main
 tags: 
     - shader 
     - texture 
@@ -55,7 +55,7 @@ void main() {
 
 To use a texture inside a shader, the function that glsl provides us is called `texture2D`. The first parameter for this function is the texture uniform and the second parameter is.. yes you guessed it, texture coordinates! 
 
-[![displaying image using shader](./post2-1.png "Photo by Geoffroy Hauwen on Unsplash")](https://unsplash.com/@geoffroyh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+[{% image "./src/writings/2021-04-15-second-post/post2-1.png", "Photo by Geoffroy Hauwen on Unsplash", "(min-width: 30em) 50vw, 100vw" %}](https://unsplash.com/@geoffroyh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 Side note: as you can probably tell from the code, texture coordinates usually range from 0 to 1 although this might not be so in some cases. But it would be safe to assume the range 0-1 for most cases. 
 
@@ -93,7 +93,8 @@ void main() {
     gl_FragColor = vec4(vec3(grid.x, grid.y, 0.0), 1.0);
 }
 ```
-!['shader grid'](./post2-2.png)
+
+{% image "./src/writings/2021-04-15-second-post/post2-2.png", "shader grid", "(min-width: 30em) 50vw, 100vw" %}
 
 Side note: If you are wondering, like I was, how `floor` operation differs from `fract` operation, try and substitute! 
 
@@ -115,7 +116,7 @@ void main() {
 }
 ```
 
-![almost there but not quite..](./post2-3.png)
+{% image "./src/writings/2021-04-15-second-post/post2-3.png", "almost there but not quite..", "(min-width: 30em) 50vw, 100vw" %}
 
 Oops what are these weird lines, we don't want those? Let us go back to what we said about texture coordinates. They range from 0 to 1, and since we are adding two vectors to each other, is it not possible for them to exceed this range..? What if we take only the `fract`ional part of the resulting vector?
 
@@ -125,16 +126,17 @@ vec2 tex_coord = fract(st+grid);
 
 Voila, we've done it! 
 
-!['mess 3'](./mess3.png)
+{% image "./src/writings/2021-04-15-second-post/mess3.png", "mess 3", "(min-width: 30em) 50vw, 100vw" %}
 
 You can now try playing around with these different values, maybe change how you want to define the `deg` of pixelation. 
 Here are a few things I got while messing around.
 
-!['mess 2'](./mess2.png)
+{% image "./src/writings/2021-04-15-second-post/mess2.png", "mess 2", "(min-width: 30em) 50vw, 100vw" %}
 
-!['mess 1'](./mess1.png)
+{% image "./src/writings/2021-04-15-second-post/mess1.png", "mess 1", "(min-width: 30em) 50vw, 100vw" %}
 
-!['mess 4'](./hero.png)
+{% image "./src/writings/2021-04-15-second-post/hero.png", "mess 4", "(min-width: 30em) 50vw, 100vw" %}
+
 
 These looked much better in motion, but I haven't yet figured out how to use videos with Gatsby xD. You can try playing with motion as well by using the `u_time` uniform.
 So until next time, which will hopefully be sooner, have fun! 💃

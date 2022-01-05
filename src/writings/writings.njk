@@ -1,6 +1,18 @@
 ---
-layout: base
+layout: main
 
 ---
-
-{% include "blog.njk" %}
+{% set posts = collections.shader | reverse %}
+<h3 class="text-lg font-semibold">Writings</h3>
+<ul class="markdown-list list-inside self-start">
+  {% for post in posts %}
+  <li class="text-sm">
+    <a class="link-primary" href="{{post.url}}">{{ post.data.title }}</a>
+    <div>
+      {% for tag in post.data.tags %}
+        <main-tag name={{tag}}></main-tag>
+      {% endfor %}
+    </div>
+  </li>
+  {% endfor %}
+</ul> 

@@ -2,7 +2,7 @@
 path: hello-shader
 date: 2021-02-19
 title: Hello Shader!
-layout: base
+layout: blog
 tags: 
     - shader
     - 2021
@@ -19,7 +19,7 @@ This article is the start of a series of articles that I plan on writing about s
 
 Today I will be going through a shader I wrote to recreate an old sketch made in Processing. 
 
-![Processing Eye](./processing-sketch.png)
+{% image "./src/writings/2021-02-19-pista-site-february/processing-sketch.png", "processing eye", "(min-width: 30em) 50vw, 100vw" %}
 
 The Processing code uses an Eye class and some vector math that I thought was a bit overkill for the idea of the sketch, which is to have two circles, one inside the other, with the inner circle responding to mouse movement, and sort of imitate human eyes 👀 
 
@@ -111,6 +111,6 @@ void main() {
 ```
 And if we just plug this angle into our smaller circles, tada, we have our shader! 
 
-![Final gif](./eye.gif)
+{% image "./src/writings/2021-02-19-pista-site-february/eye.gif", "final gif", "(min-width: 30em) 50vw, 100vw" %}
 
 If you have something to share, thoughts about this article, or any mistakes that you thought were made(very probable), please feel free to reach out to me on Instagram, link in footer. 💃 That's all for this time, hopefully there will be more soon. 

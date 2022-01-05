@@ -2,7 +2,7 @@
 path: 2021-07-07-mondrian
 date: 2021-07-07
 title: Shall we fail at making a Mondrian!
-layout: base
+layout: main
 tags: 
   - shader
   - drawing
@@ -16,17 +16,18 @@ I recently saw a [documentary](https://www.youtube.com/watch?v=WDWzY95EEbA&t=64s
 
 ### A bit of history
 
-[![Farm house with wash on the line](./farmhouse-with-wash-on-the-line.jpeg)](https://www.artsy.net/artwork/piet-mondrian-farmhouse-with-wash-on-the-line)
+[{% image "./src/writings/2021-07-07-mondrian/farmhouse-with-wash-on-the-line.jpeg", "Farm house with wash on the line", "(min-width: 30em) 50vw, 100vw" %}](https://www.artsy.net/artwork/piet-mondrian-farmhouse-with-wash-on-the-line)
 
 Piet Mondrian, whose father was a drawing teacher and whose mother we don't find much about (but she also probably did something) was introduced to art and painting since a very young age. He also had an uncle with whom he painted often and after getting a degree in Fine Arts became qualified to teach but his career was to become a tad bit bigger than that. 
 
-[![gingerpot before cubism](./gingerpot1.jpg)](https://artleove.co/piet-mondrian-color-harmony-and-rhythm/)
+[{% image "./src/writings/2021-07-07-mondrian/gingerpot1.jpg", "gingerpot before cubism", "(min-width: 30em) 50vw, 100vw" %}](https://artleove.co/piet-mondrian-color-harmony-and-rhythm/)
 
-[![gingerpot after cubism](./gingerpot2.jpg)](https://artleove.co/piet-mondrian-color-harmony-and-rhythm/)
+[{% image "./src/writings/2021-07-07-mondrian/gingerpot2.jpg", "gingerpot after cubism", "(min-width: 30em) 50vw, 100vw" %}](https://artleove.co/piet-mondrian-color-harmony-and-rhythm/)
 
 He was inspired by Cubism and Pablo Picasso and the Paris avant-garde scene at the time and it started reflecting in how he painted. Due to World War I, he was stuck back home, and could not return to Paris, and it was during this time that he met fellow artists, Bart van der Leck and Theo van Doesburg, and with Doesburg started a magazine called De Stijl and in it publishing essays about why he painted the way he painted.
 
-[![Broadway Boogie Woogie](./broadway-boogie-woogie.jpg)](https://www.nytimes.com/2019/06/06/arts/design/broadway-boogie-woogie-moma.html)
+[{% image "./src/writings/2021-07-07-mondrian/broadway-boogie-woogie.jpg", "Broadway Boogie Woogie", "(min-width: 30em) 50vw, 100vw" %}](https://www.nytimes.com/2019/06/06/arts/design/broadway-boogie-woogie-moma.html)
+
 
 His thinking was based on his belief in [Theosophy](https://en.wikipedia.org/wiki/Theosophy) and in his words, he wanted [to articulate a mystic conception of cosmic harmony that lay behind the surfaces of reality.](https://www.artsy.net/article/matthew-how-mondrian-went-abstract) 
 
@@ -60,7 +61,7 @@ void main() {
 
 What we have also done here is [include](https://en.wikipedia.org/wiki/OpenGL_Shading_Language#Preprocessor) two other glsl files, and those of you familiar with some c programming would have seen this before, but even if you haven't, it is nothing scary. This is a simple straightforward way to use functions and code from another file, by doing exactly what it says, including them at the beginning of our own code. What comes after `#include` is a file path, relative to the location of your current shader. And so for me, [lygia](https://github.com/patriciogonzalezvivo/lygia) is in the folder outside the folder I am in now, like so
 
-![folder structure](./terminal.png)
+{% image "./src/writings/2021-07-07-mondrian/terminal.png", "folder structure", "(min-width: 30em) 50vw, 100vw" %}
 
 And just to take a little space to gush about lygia, it is a wonderful library with a whole lot of functions ranging from drawing shapes to manipulating color and space. It is created by [Patricio Gonzalez Vivo](http://patriciogonzalezvivo.com/), also one of the co authors of the [book of shaders](https://thebookofshaders.com/) and the creator of [glslViewer](https://github.com/patriciogonzalezvivo/glslViewer) ❤️ Honestly, where would I be if not for these amazing tools and resources! ✨️
 
@@ -90,7 +91,7 @@ void main() {
 
 To make the grid, we can pick up from where we left in the last article and expand our space `st` but this time using `cnoise`, an implementation of classic perlin noise from the lygia library, to create non regularity in a controlled manner. `cnoise` takes in a `vec2`, so now `grid` would range between `0-size` in both directions, and this way also produced a symmetry along the x axis. There must be tons of other, probably better ways to get non uniform grids but we will stick with this for now.
 
-![Black and white grid](./bwgrid.png)
+{% image "./src/writings/2021-07-07-mondrian/bwgrid.png", "Black and white grid", "(min-width: 30em) 50vw, 100vw" %}
 
 ### Fill in the color
 
@@ -104,7 +105,7 @@ float random_c = floor(grid.x + rows)/size;
 cols = vec3(random(random_c));
 ```
 
-![random gray fill](./random1.png)
+{% image "./src/writings/2021-07-07-mondrian/random1.png", "random gray fill", "(min-width: 30em) 50vw, 100vw" %}
 
 This chooses a random `float` based on `grid.x+rows` which is essentially our columns, and same values of rgb give it the color between white and black that we see. Again, this is just one of the ways to do this, because as the title says, we are going to fail to make a Mondrian so go ahead and comment out the second line and use that if you like! 
 
@@ -119,7 +120,8 @@ colorf.z = step(0.4, random(random_c));
 gl_FragColor = vec4(colorf, 1.0);
 ```
 
-![color!](./color1.png)
+{% image "./src/writings/2021-07-07-mondrian/color1.png", "color!", "(min-width: 30em) 50vw, 100vw" %}
+
 
 With the `step` function, we are splitting the random space from `random(random_c)` into two parts, like colored/not colored, and red/not red and so forth. You can try tweaking the first value in `step` function and see the change that it makes. 
 
@@ -136,7 +138,7 @@ gl_FragColor = vec4(color, 1.0);
 
 For a much detailed and thorough explanation do check the [color chapter](https://thebookofshaders.com/06/) from the book of shaders. Our code above makes sure that only these three colors fill different parts of the grid and not any other color combinations. 
 
-![yay](./red-yellow-blue.png)
+{% image "./src/writings/2021-07-07-mondrian/red-yellow-blue.png", "yay!", "(min-width: 30em) 50vw, 100vw" %}
 
 As an extra exercise we can also try outlining all the grid cells that we have, again using the `step` and `mix` functions. Doing the outlining before the colors would hide it, just like if we were doing it on paper, so we will add it in the end. 
 
@@ -151,14 +153,12 @@ color = mix(color, 1.0-WHITE, 1.0-step(0.1, fract(grid.y*2.0)));
 color = mix(color, 1.0-WHITE, 1.0-outline.x);
 ```
 
-![outlines!](./outline.png)
+{% image "./src/writings/2021-07-07-mondrian/outline.png", "outlines!", "(min-width: 30em) 50vw, 100vw" %}
 
 And that's it, we'll stop here but there are tons of ways this can go further like using the uniform `u_time` and incorporating it in constructing our grid so the grid could move. 
 
 Here are a few things I made, hope you have fun making yours 💃👏
 
-![random displacement](./2.gif)
-
-![let's dance](./3.gif)
-
-![gimme color](./4.gif)
+{% image "./src/writings/2021-07-07-mondrian/2.gif", "random displacement", "(min-width: 30em) 50vw, 100vw" %}
+{% image "./src/writings/2021-07-07-mondrian/3.gif", "let's dance", "(min-width: 30em) 50vw, 100vw" %}
+{% image "./src/writings/2021-07-07-mondrian/4.gif", "gimme color", "(min-width: 30em) 50vw, 100vw" %}
