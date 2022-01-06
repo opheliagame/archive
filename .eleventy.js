@@ -12,7 +12,7 @@ async function imageShortcode(src, alt, sizes) {
     widths: [300, 600],
     formats: ["avif", "jpeg"],
     urlPath: "/assets/img/",
-    outputDir: "./tmp/assets/img/"
+    outputDir: "./build/assets/img/"
   });
 
   let imageAttributes = {
@@ -34,8 +34,11 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/assets/js")
     eleventyConfig.addWatchTarget("./src/assets/img")
   } else {
-    eleventyConfig.addPassthroughCopy("src/assets/css")
+    eleventyConfig.addPassthroughCopy("src/assets/js")
     eleventyConfig.addPassthroughCopy("src/assets/img")
+    eleventyConfig.addPassthroughCopy("src/assets/css/extra.css")
+    eleventyConfig.addWatchTarget("./src/assets/js")
+    eleventyConfig.addWatchTarget("./src/assets/img")
   }
 
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {

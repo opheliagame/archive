@@ -58,7 +58,6 @@ typings/
 .cache/
 _site/
 tmp/
-img/
 build/
 
 # Mac files
