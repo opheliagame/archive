@@ -59,6 +59,7 @@ typings/
 _site/
 tmp/
 img/
+build/
 
 # Mac files
 .DS_Store
