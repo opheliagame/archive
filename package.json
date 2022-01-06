@@ -13,7 +13,7 @@
     "dev": "npm run watch:css && npm run watch:app",
     "test": "ava test/**/*.spec.mjs",
     "watch:app": "cross-env NODE_ENV=development eleventy --input=src --output=tmp --serve",
-    "watch:css": "postcss src/assets/css/tailwind.css > tmp/assets/css/style.css"
+    "watch:css": "cross-env NODE_ENV=development postcss src/assets/css/tailwind.css > tmp/assets/css/style.css"
   },
   "author": "",
   "license": "MIT",

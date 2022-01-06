@@ -10,6 +10,7 @@ tags:
   - june
 img: './chess-board.png'
 heroImages: ['./chess-board.png', './shift-cols.png']
+description: 'pattern making skills should be put to test frequently'
 ---
 
 It has been quite some time, a bit over two months(!) since I last wrote an article. But let's stop beating ourself over it, maybe that's how we'll get to writing more of these. In fact an exciting update is that I've sort of made myself a shader curriculum, and by no way is this covering everything. But I am hoping that if I can give this enough time in a week, I can get to be more consistent with the project of learning about shaders! 🎉 

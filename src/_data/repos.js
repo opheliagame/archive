@@ -10,8 +10,12 @@ async function getRepositories() {
     const repo = client.repo(r.full_name)
     const langs = (await repo.languagesAsync())[0]
     let result = {
-      ...r, 
-      languages: Object.keys(langs)
+      url: r.html_url,
+      data: { 
+        title: r.name,
+        description: r.description,
+        tags: Object.keys(langs)
+      }
     }
     return result
   }))

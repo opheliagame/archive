@@ -1,0 +1,34 @@
+
+{% block list %}
+  {% set title = title.split('') %}
+  <div class="text-lg uppercase flex flex-row justify-between"> 
+    {% for letter in title %}
+      <span> {{ letter }} </span>
+    {% endfor %}  
+  </div>
+  
+  <ul>
+    {% for item in listitems %}
+
+    <li>
+      <div class="py-2">
+        <a href={{item.url}} >
+          <h3 class="text-sm font-semibold">
+            <span class="link-primary">{{ item.data.title }}</span> 
+          </h3>
+        </a>
+        <p class="text-xs"> {{ item.data.description }} </p>
+        <div class="text-xs font-extralight flex flex-row">
+          {% for tag in item.data.tags %}
+            <a href="/tags/{{tag}}">
+              <main-tag name={{tag}}></main-tag>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul> 
+
+
+{% endblock %}

@@ -1,18 +1,8 @@
 ---
 layout: main
-
 ---
-{% set posts = collections.shader | reverse %}
-<h3 class="text-lg font-semibold">Writings</h3>
-<ul class="markdown-list list-inside self-start">
-  {% for post in posts %}
-  <li class="text-sm">
-    <a class="link-primary" href="{{post.url}}">{{ post.data.title }}</a>
-    <div class="flex flex-row">
-      {% for tag in post.data.tags %}
-        <main-tag name={{tag}}></main-tag>
-      {% endfor %}
-    </div>
-  </li>
-  {% endfor %}
-</ul> 
+
+
+{% set title = "writings" %}
+{% set listitems = collections.shader | reverse %}
+{% include "list.njk" %}

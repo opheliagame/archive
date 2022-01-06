@@ -3,35 +3,8 @@ layout: main
 pagination:
   data: repos
   size: 20
-
 ---
 
-{% block content %}
-{% for item in pagination.items %}
-  {# {{ item | log }} #}
-
-  {% if loop.first %}
-    <ul class="list-inside">
-  {% endif %}
-
-  <li>
-    <div class="py-2">
-      <a href={{item.html_url}} >
-        <h3 class="text-sm font-semibold">
-          <span class="link-primary">{{ item.name }}</span> 
-        </h3>
-      </a>
-      <p class="text-xs"> {{ item.description }} </p>
-      <div class="text-xs flex flex-row">
-        {% for lang in item.languages %}
-          <main-tag name={{lang}}></main-tag>
-        {% endfor %}
-      </div>
-    </div>
-  </li>
-
-  {% if loop.last %}
-    </ul>
-  {% endif %}
-{% endfor %}
-{% endblock %}
+{% set title = "github" %}
+{% set listitems = pagination.items %}
+{% include "list.njk" %}

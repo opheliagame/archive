@@ -10,6 +10,7 @@ tags:
   - july
 img: './outline.png'
 heroImages: ['./outline.png', './color1.png', './red-yellow-blue.png']
+description: 'piet mondrian inspired pattern making exercise'
 ---
 
 I recently saw a [documentary](https://www.youtube.com/watch?v=WDWzY95EEbA&t=64s) about Mondrian and although the images of his paintings in the video were of not the best quality and there is an annoying watermark throughout, dare I say I maybe understood what Mondrian was trying to say. Having recently come across Vasudeo Gaitonde and S H Raza, I have come to appreciate color much more and how the right amount in the right places could really be something. Black and white is evergreen (sorry 😂) but imagine a world without color. 

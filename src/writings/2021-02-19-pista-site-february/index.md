@@ -8,7 +8,7 @@ tags:
     - 2021
 img: './hero.png'
 heroImages: ['./hero.png', './processing-sketch.png']
-excerpt: ''
+description: 're-writing an old sketch with shaders'
 ---
 
 Hey! Yes since I have never written for THE Web before this is how I'll start. This is probably not going to be very good since aforementioned haha but hopefully if you are as new to shaders as I am, and are learning them yourself, you might find something of value in here. 

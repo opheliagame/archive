@@ -10,7 +10,7 @@ tags:
     - april
 img: './hero.png'
 heroImages: ['./hero.png', './mess3.png', './mess1.png']
-excerpt: ''
+description: 'trying to understand texture coordinates'
 ---
 
 This is definitely not a week after the last article. And I think a part of the reason is because I haven't been studying shaders consistently. But hey, I'm back here, and so that is a good sign right? I hope it is. So today I want to talk about textures and make a simple shader that pixelates an image. 
