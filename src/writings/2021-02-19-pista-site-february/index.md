@@ -5,7 +5,7 @@ title: Hello Shader!
 layout: blog
 tags: 
     - shader
-    - 2021
+    - "2021"
 img: './hero.png'
 heroImages: ['./hero.png', './processing-sketch.png']
 description: 're-writing an old sketch with shaders'

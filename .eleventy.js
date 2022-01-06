@@ -41,6 +41,25 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/assets/img")
   }
 
+  eleventyConfig.addCollection("myGithub", (collection) => {
+    const result = collection.getAll()[0].data.myGithub
+    const tags = collection.getAll()[0].data.myGithub.tags
+    tags.forEach(tag => {
+      // console.log('hello')
+      eleventyConfig.addCollection(`tag${tag}`, (collection) => {
+        const repos = collection.getAll()[0].data.myGithub.repos
+        console.log('hello')
+        return repos.filter(repo => {
+          return repo.data.tags.includes(tag)
+        })
+      })
+    });
+
+    console.log(Object.keys(collection.getAll()[0].data.collections))
+
+    return result
+  })
+
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
     if (outputPath.endsWith(".html")) {

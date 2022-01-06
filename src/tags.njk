@@ -1,0 +1,12 @@
+---
+layout: main
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+permalink: /tags/{{ tag | slug }}/
+---
+
+{% set title = tag %}
+{% set listitems = collections[ tag ] %}
+{% include "list.njk" %}

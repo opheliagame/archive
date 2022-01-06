@@ -12,5 +12,5 @@ we are defining ourselves bit by bit everyday and some of these definitions turn
   - [ ] color scheme 
   - [ ] font size levels 
   - [ ] landing svg 
-  - [ ] make tags functional 
+  - [x] make tags functional 
   - [ ] make projects page

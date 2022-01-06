@@ -6,7 +6,7 @@ layout: blog
 tags: 
   - shader
   - drawing
-  - 2021
+  - "2021"
   - july
 img: './outline.png'
 heroImages: ['./outline.png', './color1.png', './red-yellow-blue.png']

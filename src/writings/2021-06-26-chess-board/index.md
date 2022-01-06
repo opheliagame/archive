@@ -6,7 +6,7 @@ layout: blog
 tags: 
   - shader
   - drawing
-  - 2021
+  - "2021"
   - june
 img: './chess-board.png'
 heroImages: ['./chess-board.png', './shift-cols.png']
