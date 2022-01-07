@@ -12,7 +12,11 @@
 
     <li>
       <div class="py-2">
+        {% if openLinkInNewTab %}
+        <a href={{item.url}} target="_blank">
+        {% else %}
         <a href={{item.url}} >
+        {% endif %}
           <h3 class="text-sm font-semibold">
             <span class="link-primary">{{ item.data.title }}</span> 
           </h3>
@@ -20,9 +24,7 @@
         <p class="text-xs"> {{ item.data.description }} </p>
         <div class="text-xs font-extralight flex flex-row">
           {% for tag in item.data.tags %}
-            <a href="/tags/{{tag}}">
-              <main-tag name={{tag}}></main-tag>
-            </a>
+            <main-tag name={{tag}}></main-tag>
           {% endfor %}
         </div>
       </div>

@@ -12,7 +12,7 @@ async function imageShortcode(src, alt, sizes) {
     widths: [300, 600],
     formats: ["avif", "jpeg"],
     urlPath: "/assets/img/",
-    outputDir: "./build/assets/img/"
+    outputDir: "./tmp/assets/img/"
   });
 
   let imageAttributes = {
@@ -44,17 +44,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("myGithub", (collection) => {
     const result = collection.getAll()[0].data.myGithub
     const tags = collection.getAll()[0].data.myGithub.tags
-    tags.forEach(tag => {
+    console.log(tags.length)
+    Promise.all(tags.map(tag => {
       // console.log('hello')
-      eleventyConfig.addCollection(`tag${tag}`, (collection) => {
+      eleventyConfig.addCollection(`${tag}`, (collection) => {
         const repos = collection.getAll()[0].data.myGithub.repos
-        console.log('hello')
+        console.log('hello mic check ')
         return repos.filter(repo => {
           return repo.data.tags.includes(tag)
         })
       })
-    });
-
+    }))
+    
     console.log(Object.keys(collection.getAll()[0].data.collections))
 
     return result

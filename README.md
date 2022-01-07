@@ -8,9 +8,10 @@ we are defining ourselves bit by bit everyday and some of these definitions turn
 
 ## todos
 
-  - [ ] add own favicon
+  - [x] add own favicon
   - [ ] color scheme 
   - [ ] font size levels 
   - [ ] landing svg 
   - [x] make tags functional 
+  - [ ] make github tags functional 
   - [ ] make projects page
