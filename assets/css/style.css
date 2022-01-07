@@ -384,14 +384,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .link-primary {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
-  --tw-gradient-from: #4ade80;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(74 222 128 / 0));
-  --tw-gradient-to: #22c55e;
+  --tw-gradient-from: #d9f99d;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(217 249 157 / 0));
+  --tw-gradient-to: #86efac;
   background-position: left bottom -0.75rem;
   background-repeat: no-repeat;
-}
-.col-span-full {
-  grid-column: 1 / -1;
 }
 .block {
   display: block;
@@ -411,17 +408,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .flex-col {
   flex-direction: column;
 }
-.flex-wrap {
-  flex-wrap: wrap;
-}
 .items-center {
   align-items: center;
 }
 .justify-between {
   justify-content: space-between;
-}
-.gap-y-2 {
-  row-gap: 0.5rem;
 }
 .self-start {
   align-self: flex-start;
@@ -429,8 +420,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-full {
   border-radius: 9999px;
 }
+.border-2 {
+  border-width: 2px;
+}
 .border {
   border-width: 1px;
+}
+.border-lime-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 249 157 / var(--tw-border-opacity));
 }
 .border-green-300 {
   --tw-border-opacity: 1;
@@ -572,10 +570,5 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:justify-center {
     justify-content: center;
-  }
-
-  .lg\:px-24 {
-    padding-left: 6rem;
-    padding-right: 6rem;
   }
 }
