@@ -13,8 +13,8 @@ export function createTagComponent ({ createComponent, html, renderer }) {
     render() {
       return html`
         <a href="/tags/${this.props.name}/">
-          <div class="pr-2">
-            <span class="text-xs bg-lime-200 px-1 rounded-full border border-green-300">
+          <div class="pr-2 text-xs md:text-sm font-extralight">
+            <span class="bg-lime-200 px-1 rounded-full border border-green-300">
               ${this.props.name}
             </span>
           </div>

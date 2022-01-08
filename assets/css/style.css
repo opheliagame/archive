@@ -390,11 +390,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-position: left bottom -0.75rem;
   background-repeat: no-repeat;
 }
+.mt-auto {
+  margin-top: auto;
+}
 .block {
   display: block;
 }
 .flex {
   display: flex;
+}
+.min-h-screen {
+  min-height: 100vh;
 }
 .w-full {
   width: 100%;
@@ -407,6 +413,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .flex-col {
   flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 .items-center {
   align-items: center;
@@ -462,17 +471,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
 .pr-2 {
   padding-right: 0.5rem;
 }
-.text-xs {
-  font-size: .75rem;
+.text-sm {
+  font-size: .875rem;
 }
 .text-lg {
   font-size: 1.125rem;
 }
-.text-sm {
-  font-size: .875rem;
+.text-xs {
+  font-size: .75rem;
 }
 .text-2xl {
   font-size: 1.5rem;
@@ -483,11 +495,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-semibold {
   font-weight: 600;
 }
-.font-extralight {
-  font-weight: 200;
-}
 .font-bold {
   font-weight: 700;
+}
+.font-extralight {
+  font-weight: 200;
 }
 .uppercase {
   text-transform: uppercase;
@@ -542,9 +554,33 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-right: auto;
   }
 
-  .md\:px-32 {
-    padding-left: 8rem;
-    padding-right: 8rem;
+  .md\:grid {
+    display: grid;
+  }
+
+  .md\:grid-flow-row {
+    grid-auto-flow: row;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
+  .md\:border-4 {
+    border-width: 4px;
+  }
+
+  .md\:px-96 {
+    padding-left: 24rem;
+    padding-right: 24rem;
   }
 
   .md\:py-8 {
@@ -562,8 +598,24 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-right: 1rem;
   }
 
+  .md\:text-lg {
+    font-size: 1.125rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+  }
+
   .md\:text-3xl {
     font-size: 1.875rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .md\:text-sm {
+    font-size: .875rem;
   }
 }
 @media (min-width: 1024px) {
