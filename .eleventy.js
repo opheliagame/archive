@@ -6,13 +6,15 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
 const mila = require('markdown-it-link-attributes')
+const fs = require('fs')
+const dir = 'build'
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [300, 600],
     formats: ["avif", "jpeg"],
     urlPath: "/assets/img/",
-    outputDir: "./tmp/assets/img/"
+    outputDir: `./${dir}/assets/img/`
   });
 
   let imageAttributes = {
@@ -41,22 +43,38 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/assets/img")
   }
 
+  eleventyConfig.setBrowserSyncConfig({
+    callbacks: {
+      ready: function(err, bs) {
+
+        bs.addMiddleware("*", (req, res) => {
+          const content_404 = fs.readFileSync(`${dir}/404.html`);
+          // Add 404 http status code in request header.
+          res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
+          // Provides the 404 content without redirect.
+          res.write(content_404);
+          res.end();
+        });
+      }
+    }
+  })
+
   eleventyConfig.addCollection("myGithub", (collection) => {
     const result = collection.getAll()[0].data.myGithub
     const tags = collection.getAll()[0].data.myGithub.tags
-    console.log(tags.length)
-    Promise.all(tags.map(tag => {
-      // console.log('hello')
-      eleventyConfig.addCollection(`${tag}`, (collection) => {
-        const repos = collection.getAll()[0].data.myGithub.repos
-        console.log('hello mic check ')
-        return repos.filter(repo => {
-          return repo.data.tags.includes(tag)
-        })
-      })
-    }))
+    // console.log(tags.length)
+    // Promise.all(tags.map(tag => {
+    //   // console.log('hello')
+    //   eleventyConfig.addCollection(`${tag}`, (collection) => {
+    //     const repos = collection.getAll()[0].data.myGithub.repos
+    //     console.log('hello mic check ')
+    //     return repos.filter(repo => {
+    //       return repo.data.tags.includes(tag)
+    //     })
+    //   })
+    // }))
     
-    console.log(Object.keys(collection.getAll()[0].data.collections))
+    // console.log(Object.keys(collection.getAll()[0].data.collections))
 
     return result
   })
