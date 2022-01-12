@@ -570,17 +570,31 @@ Ensure the default browser behavior of the `hidden` attribute.
     justify-content: flex-end;
   }
 
-  .md\:gap-4 {
-    gap: 1rem;
+  .md\:gap-1 {
+    gap: 0.25rem;
   }
 
   .md\:border-4 {
     border-width: 4px;
   }
 
-  .md\:px-96 {
-    padding-left: 24rem;
-    padding-right: 24rem;
+  .md\:border-lime-200 {
+    --tw-border-opacity: 1;
+    border-color: rgb(217 249 157 / var(--tw-border-opacity));
+  }
+
+  .md\:bg-lime-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(217 249 157 / var(--tw-bg-opacity));
+  }
+
+  .md\:p-2 {
+    padding: 0.5rem;
+  }
+
+  .md\:px-48 {
+    padding-left: 12rem;
+    padding-right: 12rem;
   }
 
   .md\:py-8 {

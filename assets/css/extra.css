@@ -36,6 +36,10 @@ svg {
   .language-glsl {
     font-size: medium !important;
   }
+
+  .list-container {
+    border-width: 0.25rem;
+  }
 }
 
 a:-webkit-any-link {
