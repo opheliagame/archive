@@ -7,7 +7,7 @@ const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
 const mila = require('markdown-it-link-attributes')
 const fs = require('fs')
-const dir = 'build'
+const dir = 'tmp'
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {

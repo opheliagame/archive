@@ -35,6 +35,9 @@ module.exports = {
       },
       backgroundPosition: {
         'left-bottom': 'left bottom -0.75rem',
+      },
+      backgroundImage: {
+        'eye-pattern': "url('../img/eye1.svg')"
       }
     },
     animation: {
