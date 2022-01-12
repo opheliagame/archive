@@ -1,0 +1,87 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="819"
+  height="673" viewBox="0,0,819,673">
+  <g transform="translate(-434.60365,-64.31942) scale(1.65356,1.65356)">
+    <g fill="none" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="miter"
+      stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+      font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+      <a href="/writings">
+        <g>
+          <path id="eye1" d="M319.5004,149.35761c43.35325,52.44221 46.94139,127.18856 8.81081,183.54234" fill="#d9f99d" />
+          <path d="M319.5004,149.35761c-38.13059,56.35378 -34.54245,131.10012 8.81081,183.54234" fill="#d9f99d" />
+          <!-- <text
+            x="256.38239" y="-311.97136" transform="rotate(87.25167)" fill="#000000" font-family="sans-serif"
+            font-weight="normal" font-size="61.18325" text-anchor="start">O</text> -->
+        </g>
+      </a>
+      
+      <a href="/projects">
+        <g>
+          <path id="eye2"
+            d="M701.92564,231.64399c-47.91329,11.34559 -98.31206,-2.35548 -133.88658,-36.39751c-35.57452,-34.04203 -51.48014,-83.78905 -42.25398,-132.1552"
+            fill="#d9f99d" />
+          <path
+            d="M701.92564,231.64399c9.22616,-48.36615 -6.67946,-98.11317 -42.25398,-132.1552c-35.57452,-34.04203 -85.97329,-47.7431 -133.88658,-36.39751"
+            fill="#d9f99d" />
+          <!-- <text x="-545.39507" y="317.93056" transform="rotate(-136.26107)" fill="#000000"
+            font-family="sans-serif" font-weight="normal" font-size="132.53705" text-anchor="start">O</text> -->
+        </g>
+      </a>
+      
+      <a href="/github">
+        <g>
+          <path id="eye3"
+            d="M603.65397,431.87035c-17.83079,-27.98587 -16.48558,-64.08487 3.37862,-90.66605c19.8642,-26.58119 54.10297,-38.09873 85.99392,-28.9274"
+            fill="#d9f99d" />
+          <path
+            d="M603.65397,431.87035c31.89095,9.17133 66.12972,-2.34621 85.99392,-28.9274c19.8642,-26.58119 21.20941,-62.68018 3.37862,-90.66605"
+            fill="#d9f99d" />
+          <!-- <text x="90.06285" y="742.07314" transform="rotate(-53.22913)" fill="#000000"
+            font-family="sans-serif" font-weight="normal" font-size="103.13559" text-anchor="start">O</text> -->
+        </g>
+      </a>
+      
+      <a href="/poems">
+        <g>
+          <path id="eye4"
+            d="M480.73271,392.51841c-45.49761,-17.53037 -75.80561,-60.9166 -76.60998,-109.66801c-0.80437,-48.75141 28.05583,-93.11387 72.95036,-112.13566"
+            fill="#d9f99d" />
+          <path
+            d="M480.73271,392.51841c44.89452,-19.02179 73.75473,-63.38425 72.95036,-112.13566c-0.80437,-48.75141 -31.11237,-92.13763 -76.60998,-109.66801"
+            fill="#d9f99d" />
+          <!-- <text x="-289.47878" y="474.19185" transform="rotate(-90.94526)" fill="#000000"
+            font-family="sans-serif" font-weight="normal" font-size="149.5807" text-anchor="start">O</text> -->
+        </g>
+      </a>
+    </g>
+    <a href="/writings">
+      <text font-size="48">
+        <textPath href="#eye1">
+          writings
+        </textPath>
+      </text>
+    </a>
+    <a href="/projects">
+      <text font-size="48">
+        <textPath href="#eye2">
+          projects
+        </textPath>
+      </text>
+    </a>
+    <a href="/github">
+      <text font-size="48">
+        <textPath href="#eye3">
+          github
+        </textPath>
+      </text>
+    </a>
+    <a href="/poems">
+      <text font-size="48">
+        <textPath href="#eye4">
+          poems
+        </textPath>
+      </text>
+    </a>
+  </g>
+
+  
+</svg>
