@@ -24,9 +24,9 @@ body {
   font-family: 'Inconsolata';
 }
 
-svg {
+/* svg {
   height: 70vh;
-}
+} */
 
 .language-glsl {
   font-size: small !important;
