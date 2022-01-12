@@ -1,18 +1,20 @@
 
 {% block list %}
+  <a href="{{ title | url }}">
   {% set title = title.split('') %}
-  <div class="text-lg md:text-xl uppercase flex flex-row justify-between md:justify-end"> 
-    {% for letter in title %}
-      <p class=md:pl-{{(loop.length-loop.index+1)*4}}>
-        <span> {{ letter }} </span>
-      </p>
-    {% endfor %}  
-  </div>
+    <div class="text-lg md:text-xl uppercase flex flex-row justify-between md:justify-end">
+      {% for letter in title %}
+        <p class="md:pl-{{(loop.length-loop.index+1)*2}}">
+          <span> {{ letter }} </span>
+        </p>
+      {% endfor %}
+    </div>
+  </a>
   
-  <ul class="md:grid md:grid-cols-3 md:grid-flow-row md:gap-4">
+  <div class="list-container md:grid md:grid-cols-3 md:grid-flow-row md:border-lime-200 md:bg-lime-200 md:gap-1">
     {% for item in listitems %}
 
-    <li>
+    <div class="bg-pink-200 md:p-2">
       <div class="py-2">
         {% if openLinkInNewTab %}
         <a href={{item.url}} target="_blank">
@@ -30,9 +32,9 @@
           {% endfor %}
         </div>
       </div>
-    </li>
+    </div>
     {% endfor %}
-  </ul> 
+  </div> 
 
 
 {% endblock %}

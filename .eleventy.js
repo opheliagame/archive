@@ -123,6 +123,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget('./tailwind.config.js')
   eleventyConfig.addWatchTarget('./src/assets/css/tailwind.css')
+  eleventyConfig.addWatchTarget('./tmp/assets/css/style.css')
 
-  eleventyConfig.addPassthroughCopy({ './tmp/style.css': './style.css' })
+  eleventyConfig.addPassthroughCopy({ './tmp/assets/css/style.css': './style.css' })
 }
