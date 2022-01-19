@@ -71,9 +71,6 @@ module.exports = function (eleventyConfig) {
     })
   })
   
-
-  eleventyConfig.addFilter("inspect", require("node:util").inspect);
-
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
     if (outputPath.endsWith(".html")) {
