@@ -66,7 +66,7 @@ module.exports = function (eleventyConfig) {
     tags.map((tag) => {
       const name = tag.toString().toLowerCase()
       eleventyConfig.addCollection(name, (collection) => {
-        return data.repos.filter(repo => repo.data.tags?.includes(tag));
+        return data.repos.filter(repo => repo.data.tags.includes(tag));
       });
     })
   })
@@ -127,7 +127,7 @@ module.exports = function (eleventyConfig) {
       input: 'src',
       includes: '_includes',
       data: '_data',
-      output: `tmp`
+      output: `${dir}`
     }
   }
 

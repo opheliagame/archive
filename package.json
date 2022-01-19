@@ -6,7 +6,7 @@
     "prebuild": "rimraf build && mkdir -p build/assets/css",
     "build": "run-s build:js build:app build:css",
     "build:css": "cross-env NODE_ENV=production npx tailwindcss -i src/assets/css/tailwind.css -c tailwind.config.js -o tmp/assets/css/style.css",
-    "build:app": "cross-env NODE_ENV=production eleventy --input=src --output=build",
+    "build:app": "cross-env NODE_ENV=production eleventy",
     "build:js": "rollup -i src/assets/js/main.mjs -o build/assets/js/main.mjs -f es -p \"terser={mangle: { keep_fnames: true, toplevel: true, module: true }}\" -p \"filesize={}\"",
     "lint": "standard \"src/**/*.mjs\"",
     "predev": "rimraf tmp && mkdir -p tmp/assets/css",
