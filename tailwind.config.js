@@ -5,7 +5,7 @@ module.exports = {
     // './src/**/*.njk',
     './src/**/*.mjs',
     // './src/**/*.html',
-    'build/**/*.html'
+    './build/**/*.html'
   ],
   theme: {
     colors: {
