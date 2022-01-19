@@ -29,19 +29,11 @@ async function imageShortcode(src, alt, sizes) {
 }
 
 module.exports = function (eleventyConfig) {
-  if (process.env.NODE_ENV !== 'production') {
-    eleventyConfig.addPassthroughCopy("src/assets/js")
-    eleventyConfig.addPassthroughCopy("src/assets/img")
-    eleventyConfig.addPassthroughCopy("src/assets/css/extra.css")
-    eleventyConfig.addWatchTarget("./src/assets/js")
-    eleventyConfig.addWatchTarget("./src/assets/img")
-  } else {
-    eleventyConfig.addPassthroughCopy("src/assets/js")
-    eleventyConfig.addPassthroughCopy("src/assets/img")
-    eleventyConfig.addPassthroughCopy("src/assets/css/extra.css")
-    eleventyConfig.addWatchTarget("./src/assets/js")
-    eleventyConfig.addWatchTarget("./src/assets/img")
-  }
+
+  eleventyConfig.addPassthroughCopy("src/assets/js")
+  eleventyConfig.addPassthroughCopy("src/assets/img")
+  eleventyConfig.addPassthroughCopy("src/assets/css/extra.css")
+    
 
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
@@ -115,10 +107,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget('./tailwind.config.js')
   eleventyConfig.addWatchTarget('./src/assets/css/tailwind.css')
-  eleventyConfig.addWatchTarget('./tmp/assets/css/style.css')
-
-  eleventyConfig.addPassthroughCopy({ './tmp/assets/css/style.css': './style.css' })
-
+  
   return {
     dir: {
       input: 'src',
