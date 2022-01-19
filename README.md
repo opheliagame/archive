@@ -10,8 +10,8 @@ we are defining ourselves bit by bit everyday and some of these definitions turn
 
   - [x] add own favicon
   - [ ] color scheme 
-  - [ ] font size levels 
-  - [ ] landing svg 
+  - [x] font size levels 
+  - [x] landing svg 
   - [x] make tags functional 
-  - [ ] make github tags functional 
+  - [x] make github tags functional 
   - [ ] make projects page

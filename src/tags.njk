@@ -5,8 +5,10 @@ pagination:
   size: 1
   alias: tag
 permalink: /tags/{{ tag | slug }}/
+eleventyComputed:
+  link: /tags/{{ tag | slug }}/
+  title: "{{ tag | slug }}"
 ---
 
-{% set title = tag %}
 {% set listitems = collections[ tag ] %}
 {% include "list.njk" %}

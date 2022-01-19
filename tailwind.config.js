@@ -2,9 +2,10 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
-    './src/**/*.njk',
+    // './src/**/*.njk',
     './src/**/*.mjs',
-    './src/**/*.html',
+    // './src/**/*.html',
+    'tmp/**/*.html'
   ],
   theme: {
     colors: {
@@ -12,21 +13,10 @@ module.exports = {
       green: colors.green,
       lime: colors.lime
     },
-    fontSize: {
-      'xxs': '.50rem',
-      'xs': '.75rem',
-      'sm': '.875rem',
-      'base': '1rem',
-      'lg': '1.125rem',
-      'xl': '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
-      '5xl': '3rem',
-      '6xl': '4rem',
-      '7xl': '5rem',
-    },
     extend: {
+      fontSize: {
+        'xxs': '.50rem',
+      },
       zIndex: {
         '-10': '-10',
       },
@@ -36,13 +26,14 @@ module.exports = {
       backgroundPosition: {
         'left-bottom': 'left bottom -0.75rem',
       },
-      backgroundImage: {
-        'eye-pattern': "url('../img/eye1.svg')"
-      }
+      // backgroundImage: {
+      //   'eye-pattern': "url('../img/eye1.svg')"
+      // }
     },
     animation: {
       'spin-slow': 'spin 8s linear infinite',
-      'flutter': 'flutter 3s ease-in-out infinite'
+      'flutter': 'flutter 3s ease-in-out infinite',
+      'expand': 'expand 5s linear infinite'
     },
     keyframes: {
       flutter: {
@@ -50,8 +41,12 @@ module.exports = {
         '50%': { transform: 'skew(0deg, 15deg)' },
       },
       spin: {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform:'rotate(360deg)' }
+        from: { transform: 'rotate(0deg)' },
+        to: { transform:'rotate(360deg)' }
+      },
+      expand: {
+        '0%, 100%': { transform: 'translateX(0%)' },
+        '50%': { transform:'translateX(-100%)' }
       }
     }
   },

@@ -7,7 +7,7 @@ const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
 const mila = require('markdown-it-link-attributes')
 const fs = require('fs')
-const dir = 'tmp'
+const dir = 'build'
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
@@ -59,25 +59,20 @@ module.exports = function (eleventyConfig) {
     }
   })
 
-  eleventyConfig.addCollection("myGithub", (collection) => {
-    const result = collection.getAll()[0].data.myGithub
-    const tags = collection.getAll()[0].data.myGithub.tags
-    // console.log(tags.length)
-    // Promise.all(tags.map(tag => {
-    //   // console.log('hello')
-    //   eleventyConfig.addCollection(`${tag}`, (collection) => {
-    //     const repos = collection.getAll()[0].data.myGithub.repos
-    //     console.log('hello mic check ')
-    //     return repos.filter(repo => {
-    //       return repo.data.tags.includes(tag)
-    //     })
-    //   })
-    // }))
-    
-    // console.log(Object.keys(collection.getAll()[0].data.collections))
-
-    return result
+  const result = require("./src/_data/myGithub")();
+  result.then(data => {
+    const tags = data.tags;
+      
+    tags.map((tag) => {
+      const name = tag.toString().toLowerCase()
+      eleventyConfig.addCollection(name, (collection) => {
+        return data.repos.filter(repo => repo.data.tags?.includes(tag));
+      });
+    })
   })
+  
+
+  eleventyConfig.addFilter("inspect", require("node:util").inspect);
 
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
@@ -126,4 +121,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('./tmp/assets/css/style.css')
 
   eleventyConfig.addPassthroughCopy({ './tmp/assets/css/style.css': './style.css' })
+
+  return {
+    dir: {
+      input: 'src',
+      includes: '_includes',
+      data: '_data',
+      output: `tmp`
+    }
+  }
+
 }
