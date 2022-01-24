@@ -12,7 +12,7 @@ const dir = '_site'
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [300, 600],
-    formats: ["gif", "jpeg"],
+    formats: ["avif", "jpeg"],
     urlPath: "/assets/img/",
     outputDir: `./${dir}/assets/img/`
   });
