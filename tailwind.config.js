@@ -5,7 +5,7 @@ module.exports = {
     // './src/**/*.njk',
     './src/**/*.mjs',
     // './src/**/*.html',
-    './build/**/*.html'
+    './_site/**/*.html'
   ],
   theme: {
     colors: {
@@ -26,9 +26,9 @@ module.exports = {
       backgroundPosition: {
         'left-bottom': 'left bottom -0.75rem',
       },
-      // backgroundImage: {
-      //   'eye-pattern': "url('../img/eye1.svg')"
-      // }
+      fontFamily: {
+        'hindi': ['Rajdhani', 'sans-serif'],
+      }
     },
     animation: {
       'spin-slow': 'spin 8s linear infinite',

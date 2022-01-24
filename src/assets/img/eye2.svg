@@ -1,5 +1,5 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800"
-  height="673" viewBox="0,0,800,673">
+  height="450" viewBox="0,0,800,673">
   <g transform="translate(-44.36633,-39.43406) scale(1.01655,1.01655)">
     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="miter"
       stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
@@ -65,7 +65,7 @@
         <path d="M182.04199,401.99774c48.84823,-34.29668 102.84692,-60.59482 159.96719,-77.9063" fill="#86efac"
           stroke="#000000" />
       </g>
-      <a href="/github">
+      <!-- old github -->
         <g>
           <path id="eye3" d="M66.81254,330.12167c92.06266,-25.36016 190.17592,9.33641 245.8287,86.93434" fill="#f472b6"
             stroke="#000000" />
@@ -80,7 +80,7 @@
           <path d="M133.73928,332.14646c44.47746,5.97496 87.23568,21.09588 125.58125,44.41029" fill="#86efac"
             stroke="#000000" />
         </g>
-      </a>
+      
       <a href="/writings">
         <g>
           <path id="eye1" d="M535.17795,406.08215c129.83836,-16.46724 250.20583,70.55977 275.26191,199.0174" fill="#f472b6"
@@ -151,13 +151,13 @@
         </textPath>
       </text>
     </a>
-    <a href="/github">
+    <!-- <a href="/github">
       <text font-size="48">
         <textPath href="#eye3">
           github
         </textPath>
       </text>
-    </a>
+    </a> -->
     <a href="/poems">
       <text font-size="48">
         <textPath href="#eye4">

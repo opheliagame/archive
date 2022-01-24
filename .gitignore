@@ -57,8 +57,6 @@ typings/
 # output directories
 .cache/
 _site/
-tmp/
-build/
 
 # Mac files
 .DS_Store

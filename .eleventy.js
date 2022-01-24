@@ -7,12 +7,12 @@ const markdownIt = require('markdown-it')
 const markdownItClass = require('@toycode/markdown-it-class')
 const mila = require('markdown-it-link-attributes')
 const fs = require('fs')
-const dir = 'build'
+const dir = '_site'
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [300, 600],
-    formats: ["avif", "jpeg"],
+    formats: ["gif", "jpeg"],
     urlPath: "/assets/img/",
     outputDir: `./${dir}/assets/img/`
   });
@@ -51,17 +51,17 @@ module.exports = function (eleventyConfig) {
     }
   })
 
-  const result = require("./src/_data/myGithub")();
-  result.then(data => {
-    const tags = data.tags;
+  // const result = require("./src/_data/myGithub")();
+  // result.then(data => {
+  //   const tags = data.tags;
       
-    tags.map((tag) => {
-      const name = tag.toString().toLowerCase()
-      eleventyConfig.addCollection(name, (collection) => {
-        return data.repos.filter(repo => repo.data.tags.includes(tag));
-      });
-    })
-  })
+  //   tags.map((tag) => {
+  //     const name = tag.toString().toLowerCase()
+  //     eleventyConfig.addCollection(name, (collection) => {
+  //       return data.repos.filter(repo => repo.data.tags.includes(tag));
+  //     });
+  //   })
+  // })
   
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
@@ -96,6 +96,7 @@ module.exports = function (eleventyConfig) {
 
   const milaOptions = {
     attrs: {
+      class: "link-primary",
       target: "_blank",
       rel: "noopener noreferrer"
     }
