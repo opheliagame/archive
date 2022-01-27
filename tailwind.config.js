@@ -11,7 +11,8 @@ module.exports = {
     colors: {
       pink: colors.pink,
       green: colors.green,
-      lime: colors.lime
+      lime: colors.lime, 
+      white: colors.white
     },
     extend: {
       fontSize: {
