@@ -3,6 +3,10 @@
   background: transparent;  
 }  */
 
+html {
+  height: 100%;
+}
+
 .markdown-list li::marker {
   content: "> ";
 }

@@ -41,7 +41,7 @@
           </h3>
         </a>
         <p class="text-xs md:text-lg"> {{ item.data.description }} </p>
-        <div class="flex flex-row flex-wrap">
+        <div class="flex flex-row flex-wrap gap-x-2">
           {% for tag in item.data.tags %}
             <main-tag name={{tag}}></main-tag>
           {% endfor %}

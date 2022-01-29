@@ -28,52 +28,54 @@ description: 'little shader experiments'
   }
 </script>
 
-<div class="py-4 flex flex-col gap-4
-            " x-data="{}">
+<div class="py-2 flex flex-col gap-4 font-hindi" x-data="{}">
   {% for item in tinyShader.items %}
-  <div class="bg-lime-200">
-    <div>
+  <div class="bg-lime-200 p-1 flex flex-col gap-y-1
+              hover:shadow-md 
+              border-2 border-lime-200 hover:border-pink-400">
+    <div class="px-0.5">
       {{item.caption}}
     </div>
-    <div class="flex flex-row gap-2 h-80 md:h-full">
-      <div class="relative w-1/2">
-        <button class="absolute left-1 inset-y-0
-                      focus:outline-none
-                      opacity-50 bg-white"
-          @click="leftScroll($refs['exp{{loop.index}}-1'])">
-          <img src="/assets/img/arrow-left.png" alt="">
-    
-        </button>
-        <button class="absolute right-1 inset-y-0
-                      focus:outline-none
-                      opacity-50 bg-white"
-          @click="rightScroll($refs['exp{{loop.index}}-1'])">
-          <img src="/assets/img/arrow-right.png">
-        </button>
+    <div class="flex flex-col md:flex-row md:justify-center gap-2">
+      {% if item.refImages.length != 0 %}
+      <div class="relative w-full md:w-1/2">
+        <div class="absolute inset-y-0 inset-x-0 w-full px-1
+                    flex flex-row justify-between items-center">
+          <button class="focus:outline-none"
+            @click="leftScroll($refs['exp{{loop.index}}-1'])">
+            <img class="opacity-50 bg-white rounded-full" src="/assets/img/arrow-left.png" alt="">
+      
+          </button>
+          <button class="focus:outline-none"
+            @click="rightScroll($refs['exp{{loop.index}}-1'])">
+            <img class="opacity-50 bg-white rounded-full" src="/assets/img/arrow-right.png">
+          </button>
+        </div>
+        
+        
         <div class="flex flex-row flex-nowrap overflow-hidden
-                    h-full
-                    " x-ref="exp{{loop.index}}-1">
+                    h-full" x-ref="exp{{loop.index}}-1">
           {% for img in item.refImages %}
-          <img src="/assets/img/projects/tiny-shader/{{img}}" />
+          <img class="object-cover" src="/assets/img/projects/tiny-shader/{{img}}" />
           {% endfor %}
         </div>
       </div>
-      <div class="relative w-1/2">
-        <button class="absolute left-1 inset-y-0
-                      focus:outline-none
-                      opacity-50 bg-white"
-          @click="leftScroll($refs['exp{{loop.index}}-2'])">
-          <img src="/assets/img/arrow-left.png" alt="">
-        </button>
-        <button class="absolute right-1 inset-y-0
-                      focus:outline-none
-                      opacity-50 bg-white"
-          @click="rightScroll($refs['exp{{loop.index}}-2'])">
-          <img src="/assets/img/arrow-right.png">
-        </button>
+      {% endif %}
+      <div class="relative  w-full md:w-1/2">
+        <div class="absolute inset-y-0 inset-x-0 w-full px-1
+                    flex flex-row justify-between items-center">
+          <button class="focus:outline-none"
+            @click="leftScroll($refs['exp{{loop.index}}-2'])">
+            <img class="opacity-50 bg-white rounded-full" src="/assets/img/arrow-left.png" alt="">
+          </button>
+          <button class="focus:outline-none"
+            @click="rightScroll($refs['exp{{loop.index}}-2'])">
+            <img class="opacity-50 bg-white rounded-full" src="/assets/img/arrow-right.png">
+          </button>
+        </div>
+        
         <div class="flex flex-row flex-nowrap overflow-hidden
-                    h-full
-                    " x-ref="exp{{loop.index}}-2">
+                    h-full" x-ref="exp{{loop.index}}-2">
     
           {% for img in item.outImages %}
           <img src="/assets/img/projects/tiny-shader/{{img}}" />
