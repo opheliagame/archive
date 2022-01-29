@@ -477,6 +477,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-repeat: no-repeat;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .absolute {
   position: absolute;
 }
@@ -490,12 +494,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: 0px;
 }
 
-.left-1 {
-  left: 0.25rem;
-}
-
-.right-1 {
-  right: 0.25rem;
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
 }
 
 .z-10 {
@@ -518,10 +519,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-.h-80 {
-  height: 20rem;
-}
-
 .h-full {
   height: 100%;
 }
@@ -532,10 +529,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-full {
   width: 100%;
-}
-
-.w-1\/2 {
-  width: 50%;
 }
 
 .flex-1 {
@@ -580,6 +573,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-x-2 {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 
 .gap-y-2 {
@@ -635,6 +633,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -677,10 +680,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
-}
-
-.pr-2 {
-  padding-right: 0.5rem;
 }
 
 .pb-1 {
@@ -823,8 +822,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: grid;
   }
 
-  .md\:h-full {
-    height: 100%;
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   @-webkit-keyframes expand {
@@ -860,8 +859,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
   .md\:justify-end {
     justify-content: flex-end;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
   }
 
   .md\:gap-1 {
