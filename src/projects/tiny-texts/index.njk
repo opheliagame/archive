@@ -1,0 +1,24 @@
+---
+path: tiny-texts
+date: 2022-01-29
+title: Tiny Texts 
+layout: blog
+tags: 
+    - project
+    - 2021
+description: 'a concrete poetry experiment with p5js'
+---
+
+<div class="flex flex-col gap-y-2 py-2
+            md:grid md:gap-4 md:grid-cols-2 md:grid-flow-row md:auto-rows-max
+            font-hindi">
+    {% for text in tinyTexts %}
+    <a href="{{text.ig_url}}" target="_blank"
+        class="flex flex-col gap-y-1 p-1 bg-lime-200
+                hover:shadow-md 
+                border-2 border-lime-200 hover:border-pink-400">
+        <h3 class="flex-1 px-0.5">{{text.caption}}</h3>
+        <img class="w-full h-full" src={{text.src}} alt={{text.alt}}>
+    </a>
+    {% endfor %}
+</div>
