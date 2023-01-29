@@ -25,19 +25,19 @@
       {% endfor %}
     </div>
   </a>
-  
+
   <div class="list-container md:grid md:grid-cols-3 md:grid-flow-row md:border-lime-200 md:bg-lime-200 md:gap-1">
     {% for item in listitems %}
 
     <div class="bg-pink-200 md:p-2">
       <div class="py-2">
         {% if openLinkInNewTab %}
-        <a href={{item.url}} target="_blank">
+        <a href="{{item.url | url}}" target="_blank">
         {% else %}
-        <a href={{item.url}} >
+        <a href="{{item.url | url}}" >
         {% endif %}
           <h3 class="text-sm md:text-xl font-semibold pb-1">
-            <span class="link-primary">{{ item.data.title }}</span> 
+            <span class="link-primary">{{ item.data.title }}</span>
           </h3>
         </a>
         <p class="text-xs md:text-lg"> {{ item.data.description }} </p>
@@ -49,7 +49,7 @@
       </div>
     </div>
     {% endfor %}
-  </div> 
+  </div>
 
 
 {% endblock %}

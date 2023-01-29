@@ -32,14 +32,14 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" >
     <link rel="stylesheet" href="{{ '/assets/css/extra.css' | url }}" >
     <script defer src="https://unpkg.com/alpinejs@3.8.1/dist/cdn.min.js"></script>
-    <script type="module" src="assets/js/main.mjs"></script>
+    <script type="module" src="{{ '/assets/js/main.mjs' | url }}"></script>
 
     {# <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.2.js"></script> #}
 
   </head>
   <body class="bg-pink-200 h-full">
-    
+
 
     <div class="md:container md:mx-auto h-full
                 flex flex-col items-center
@@ -59,6 +59,6 @@
 
     </div>
 
-    <script src="assets/js/sign.js"></script>
+    <script src="{{ '/assets/js/sign.js' | url }}"></script>
   </body>
 </html>

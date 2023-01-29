@@ -13,7 +13,7 @@ async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(src, {
     widths: [300, 600],
     formats: ["avif", "jpeg"],
-    urlPath: "/assets/img/",
+    urlPath: "/archive/assets/img/",
     outputDir: `./${dir}/assets/img/`
   });
 
@@ -33,7 +33,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/js")
   eleventyConfig.addPassthroughCopy("src/assets/img")
   eleventyConfig.addPassthroughCopy("src/assets/css/extra.css")
-    
+
 
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
@@ -54,7 +54,7 @@ module.exports = function (eleventyConfig) {
   // const result = require("./src/_data/myGithub")();
   // result.then(data => {
   //   const tags = data.tags;
-      
+
   //   tags.map((tag) => {
   //     const name = tag.toString().toLowerCase()
   //     eleventyConfig.addCollection(name, (collection) => {
@@ -62,7 +62,7 @@ module.exports = function (eleventyConfig) {
   //     });
   //   })
   // })
-  
+
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
     if (outputPath.endsWith(".html")) {
@@ -108,13 +108,15 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget('./tailwind.config.js')
   eleventyConfig.addWatchTarget('./src/assets/css/tailwind.css')
-  
+
   return {
+    pathPrefix: '/archive/',
+    passthroughFileCopy: true,
     dir: {
       input: 'src',
       includes: '_includes',
       data: '_data',
-      output: `${dir}`
+      output: `${dir}`,
     }
   }
 
